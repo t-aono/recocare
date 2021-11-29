@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ComponentController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,4 +22,9 @@ Route::get('/', function () {
 Route::name('component.')->group(function () {
     Route::get('/component', [ComponentController::class, 'index'])->name('index');
     Route::post('/component/store', [ComponentController::class, 'store'])->name('store');
+});
+
+Route::name('product.')->group(function () {
+    Route::get('/product', [ProductController::class, 'index'])->name('index');
+    Route::get('/product/update', [ProductController::class, 'update'])->name('update');
 });
