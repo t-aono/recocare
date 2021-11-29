@@ -16,10 +16,7 @@ class CreateEffectsTable extends Migration
         Schema::create('effects', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->unsignedBigInteger('component_id');
             $table->timestamps();
-
-            $table->foreign('component_id')->references('id')->on('components');
         });
     }
 

@@ -26,6 +26,20 @@
             <input type="file" name="csv">
             <input type="submit" name="apply" value="適用">
         </form>
+
+        <table>
+            <tr>
+                <th>成分</th>
+                <th>効果</th>
+            </tr>
+            @foreach ($list as $row)
+                <tr>
+                    <td>{{ $row['component'] }}</td>
+                    <td>{{ implode(', ', $row['effects']) }}
+                    </td>
+                </tr>
+            @endforeach
+        </table>
     </div>
 </body>
 </html>
