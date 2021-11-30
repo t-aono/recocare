@@ -26,5 +26,5 @@ Route::name('component.')->group(function () {
 
 Route::name('product.')->group(function () {
     Route::get('/product', [ProductController::class, 'index'])->name('index');
-    Route::get('/product/update', [ProductController::class, 'update'])->name('update');
+    Route::post('/product/update', [ProductController::class, 'update'])->name('update');
 });

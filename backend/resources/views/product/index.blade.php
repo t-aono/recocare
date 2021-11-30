@@ -5,14 +5,58 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>商品一覧</title>
+    <style>
+        ul {
+           list-style: none;
+           display: flex;
+           flex-wrap: wrap;
+           gap: 10px 15px;
+        }
+        .color-red {
+            color: darkred;
+        }
+    </style>
 </head>
 <body>
     <h1>商品一覧</h1>
-
-    <form method="get" action="{{ route('product.update') }}">
-        @csrf
-        <input type="submit" value="商品データ更新" />
-    </form>
     
+        @if ($errors->any())
+            <div class="color-red">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
+    <form method="post" action="{{ route('product.update') }}">
+        @csrf
+        <input type="submit" name="genre" value="ジャンル更新" />
+        
+        <ul>
+            @foreach ($genres as $genre)
+            <li>
+                <label for="{{ $genre['genre_id'] }}">
+                    <input type="radio" name="genre_id" id="{{ $genre['genre_id'] }}" value="{{$genre['genre_id']}}" />
+                    {{ $genre['genre_name'] }}
+                </label>
+            </li>
+            @endforeach
+        </ul>
+        <input type="submit" name="show" value="商品データ表示" />
+        <input type="submit" name="product" value="商品データ更新" />
+
+        @if (isset($products))
+            <table>
+                @foreach ($products as $product)
+                <tr>
+                    <td>{{$product['name']}}</td>
+                </tr>
+                @endforeach
+            </table>
+        @endif
+    </form>
+        
 </body>
 </html>

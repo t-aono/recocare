@@ -5,13 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>成分一覧</title>
+    <style>
+        .color-red {
+            color: darkred;
+        }
+    </style>
 </head>
 <body>
     <div>
     <h1>成分一覧</h1>
 
         @if ($errors->any())
-            <div class="alert alert-danger">
+            <div class="color-red">
                 <ul>
                     @foreach ($errors->all() as $error)
                         <li>{{ $error }}</li>

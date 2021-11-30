@@ -2,28 +2,40 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Genre;
+use App\Models\Product;
 use Illuminate\Http\Request;
+use App\Services\RakutenGenreService;
+use App\Services\RakutenItemService;
 
 class ProductController extends Controller
 {
     public function index() {
-        return view('product.index');
+        $genres = Genre::all();
+        return view('product.index', compact('genres'));
     }
 
-    public function update() {
+    public function update(Request $request) {
         
-        $rakuten_api_url = 'https://app.rakuten.co.jp/services/api/IchibaGenre/Search/20140222?format=json&applicationId=ff23cf2aa78087c10652121c85c9b165';
-        // $url = 'https://jsonplaceholder.typicode.com/posts';
+        if ($request->input('genre')) {
+            $rakutenGenre = new RakutenGenreService; 
+            $rakutenGenre->updateCosmeGenreChildren(100939);  // "美容・コスメ・香水" の子ジャンル
+        }
 
-        $params = ['genreId' => 0];
+        if ($request->input('product')) {
+            $request->validate(['genre_id' => 'required']);
+            $rakutenItem = new RakutenItemService;
+            $rakutenItem->updateProducts($request->input('genre_id'));
+        }
 
-        $client = new \GuzzleHttp\Client();
-        $response = $client->request(
-            'GET',
-            $rakuten_api_url,
-            ['query' => $params]
-        );
-        dd($response->getBody()->getContents());
+        if ($request->input('show')) {
+            $request->validate(['genre_id' => 'required']);
+            $products = Product::all();
+            $genres = Genre::all();
+            return view('product.index', compact('products', 'genres'));
+        }
 
+        return redirect()->route('product.index');
     }
+
 }
