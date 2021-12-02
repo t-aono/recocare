@@ -38,14 +38,13 @@
             @foreach ($genres as $genre)
             <li>
                 <label for="{{ $genre['genre_id'] }}">
-                    <input type="radio" name="genre_id" id="{{ $genre['genre_id'] }}" value="{{$genre['genre_id']}}" />
+                    <input type="checkbox" name="genre_id[]" id="{{ $genre['genre_id'] }}" value="{{$genre['genre_id']}}" />
                     {{ $genre['genre_name'] }}
                 </label>
             </li>
             @endforeach
         </ul>
-        <input type="submit" name="show" value="商品データ表示" />
-        <input type="submit" name="product" value="商品データ更新" />
+        <input type="submit" name="item" value="商品データ更新" />
 
         @if (isset($products))
             <table>

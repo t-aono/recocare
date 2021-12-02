@@ -2,8 +2,8 @@
 
 namespace App\Services;
 
+use App\Models\Genre;
 use RakutenRws_Client;
-use Illuminate\Support\Facades\DB;
 
 class RakutenGenreService
 {
@@ -20,8 +20,8 @@ class RakutenGenreService
                 $child = $value['child'];
                 $children[] = ['genre_id' => $child['genreId'], 'genre_name' => $child['genreName']];
             }
-            DB::table('genres')->truncate();
-            DB::table('genres')->insert($children);
+            $genre = new Genre;
+            $genre->trancateAndInsert($children);
         } else {
             "Errors:" . $response->getMessage();
         }
