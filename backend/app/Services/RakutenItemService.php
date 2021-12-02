@@ -2,36 +2,40 @@
 
 namespace App\Services;
 
+use App\Models\Product;
 use RakutenRws_Client;
-use Illuminate\Support\Facades\DB;
 
 class RakutenItemService
 {
-    public function updateProducts($genre_id)
+    public function updateProducts($genre_id_list)
     {
         $client = new RakutenRws_Client;
-
         $client->setApplicationId(config('app.rakuten_id'));
 
-        $response = $client->execute('IchibaItemSearch', array(
-            'genreId' => $genre_id,
-        ));
+        $product = new Product;
 
-        if ($response->isOk()) {
-            $records = [];
-            foreach ($response['Items'] as $value) {
-                $item = $value['Item'];
-                $record['name'] = $item['itemName'];
-                $record['caption'] = $item['itemCaption'];
-                $record['price'] = $item['itemPrice'];
-                $record['genre_id'] = $item['genreId'];
-                $record['rakuten_url'] = $item['itemUrl'];
-                $record['image_url'] = $item['smallImageUrls'][0]['imageUrl'];
-                $records[] = $record;
+        foreach ($genre_id_list as $genre_id) {
+            $page = 1;
+            $last = 1;
+            while($page <= $last) {
+                $response = $client->execute('IchibaItemSearch', array(
+                    'keyword' => '有効成分',
+                    'genreId' => $genre_id,
+                    'page' => $page,
+                    'sort' => '+reviewCount',
+                ));
+                $page++;
+    
+                if ($response->isOk()) {
+                    $last = $response['pageCount'];
+                    $product->itemsStore($response['Items'], $genre_id);            
+                } else {
+                    $last = 1;
+                    echo "Errors:" . $response->getMessage();
+                }
+    
+                sleep(1);
             }
-            DB::table('products')->insert($records);
-        } else {
-            echo "Errors:" . $response->getMessage();
         }
     }
 }
