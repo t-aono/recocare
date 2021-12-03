@@ -16,12 +16,12 @@ class RakutenGenreService
         ));
         if ($response->isOk()) {
             $children = [];
-            foreach($response['children'] as $value) {
+            foreach ($response['children'] as $value) {
                 $child = $value['child'];
                 $children[] = ['genre_id' => $child['genreId'], 'genre_name' => $child['genreName']];
             }
             $genre = new Genre;
-            $genre->trancateAndInsert($children);
+            $genre->trancateAndCreate($children);
         } else {
             "Errors:" . $response->getMessage();
         }

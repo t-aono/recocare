@@ -10,12 +10,23 @@ class Genre extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['genre_id', 'genre_name'];
+    protected $fillable = ['genre_id', 'genre_name', 'is_use'];
 
-    public function trancateAndInsert($children) {
+    public function trancateAndCreate($children)
+    {
         DB::statement('SET FOREIGN_KEY_CHECKS=0;');
         DB::table('genres')->truncate();
-        DB::table('genres')->insert($children);
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+
+        foreach ($children as $child) {
+            $this->create($child);
+        }
+    }
+
+    public function setUseGenre($genre_id)
+    {
+        $this->where('genre_id', $genre_id)->update([
+            'is_use' => 1
+        ]);
     }
 }

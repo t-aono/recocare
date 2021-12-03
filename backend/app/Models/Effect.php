@@ -12,7 +12,8 @@ class Effect extends Model
 
     protected $fillable = ['name'];
 
-    public function componens() {
+    public function components()
+    {
         return $this->belongsToMany(Component::class);
     }
 }
