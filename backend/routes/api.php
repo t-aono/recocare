@@ -14,4 +14,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/ranking', \App\Http\Controllers\RankingProducts::class);
+Route::get('/ranking', \App\Http\Controllers\Api\RankingProducts::class);
+Route::get('/genre', [\App\Http\Controllers\Api\GenreController::class, 'index']);
