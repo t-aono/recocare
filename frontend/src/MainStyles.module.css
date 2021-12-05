@@ -1,0 +1,15 @@
+.mainFontColor {
+  color: #666;
+}
+
+.questionTitle {
+  border-bottom: solid 1px #666;
+}
+
+.productLink:hover {
+  color: blue;
+}
+
+.featureInactive {
+  color: #ccc;
+}
