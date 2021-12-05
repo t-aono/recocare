@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Effect;
@@ -39,7 +40,7 @@ class RankingProducts extends Controller
             }
             $result[] = array_merge($product->toArray(), ['point' => $point]);
         }
-        uasort($result, function ($a, $b) {
+        usort($result, function ($a, $b) {
             return $b['point'] - $a['point'];
         });
 
