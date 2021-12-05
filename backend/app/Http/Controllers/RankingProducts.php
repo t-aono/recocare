@@ -21,26 +21,29 @@ class RankingProducts extends Controller
         $genre_id = $request->input('genre');
         $effect_id = $request->input('effect');
 
-        $components = Effect::find($effect_id)->components;
-        dd($components->toArray());
+        $effect = new Effect;
+        $components = $effect->getComponentNames($effect_id);
 
         $products = Product::where('parent_genre_id', $genre_id)->get();
-        $effctives = [];
-
+        $result = [];
         foreach ($products as $product) {
+            $point = 0;
             preg_match("/有効成分.+/", $product->caption, $effctive);
-            $effctives[] = $effctive;
             if (!$effctive) {
                 preg_match("/成分.+/", $product->caption, $ingredient);
-                $effctives[] = $ingredient;
             }
+            if ($effctive) {
+                foreach ($components as $component) {
+                    if (strpos($effctive[0], $component) !== false) $point++;
+                }
+            }
+            $result[] = array_merge($product->toArray(), ['point' => $point]);
         }
+        uasort($result, function ($a, $b) {
+            return $b['point'] - $a['point'];
+        });
 
-        return response()->json([
-            'genre_id' => $genre_id,
-            'effect' => $effect,
-            'products' => $products,
-            'effctives' => $effctives,
-        ]);
+        // dd($result);
+        return response()->json($result);
     }
 }
