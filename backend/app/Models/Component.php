@@ -13,17 +13,19 @@ class Component extends Model
 
     protected $fillable = ['name'];
 
-    public function effects() {
+    public function effects()
+    {
         return $this->belongsToMany(Effect::class);
     }
 
-    public function getComponentEffectList() {
+    public function getComponentEffectList()
+    {
         $list = [];
-        foreach($this->all() as $component) {
+        foreach ($this->all() as $component) {
             $component_name = $component->name;
             $effects = $component->effects()->get()->toArray();
-            $effect_names =[];
-            foreach($effects as $effect) {
+            $effect_names = [];
+            foreach ($effects as $effect) {
                 $effect_names[] = $effect['name'];
             }
             $list[] = [
@@ -34,7 +36,8 @@ class Component extends Model
         return $list;
     }
 
-    public function trancateRelationTable() {
+    public function trancateRelationTable()
+    {
         DB::statement('SET FOREIGN_KEY_CHECKS=0;');
         DB::table('component_effect')->truncate();
         DB::table('components')->truncate();
@@ -42,7 +45,8 @@ class Component extends Model
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');
     }
 
-    public function saveComponentEffect($line) {
+    public function saveComponentEffect($line)
+    {
         $component = $this->create(['name' => $line[0]]);
 
         $effect = new Effect;

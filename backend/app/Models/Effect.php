@@ -12,7 +12,17 @@ class Effect extends Model
 
     protected $fillable = ['name'];
 
-    public function componens() {
+    public function components()
+    {
         return $this->belongsToMany(Component::class);
+    }
+
+    public function getComponentNames($id)
+    {
+        $components = $this->find($id)->components->toArray();
+
+        return array_map(function ($component) {
+            return $component['name'];
+        }, $components);
     }
 }

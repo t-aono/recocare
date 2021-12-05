@@ -19,8 +19,8 @@ class CreateProductsTable extends Migration
             $table->string('name');
             $table->text('caption');
             $table->integer('price');
-            $table->integer('genre_id');
-            $table->integer('parent_genre_id');
+            $table->string('genre_id');
+            $table->string('parent_genre_id');
             $table->string('rakuten_url');
             $table->string('image_url');
             $table->timestamps();
