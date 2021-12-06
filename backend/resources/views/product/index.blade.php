@@ -39,7 +39,7 @@
             <li>
                 <label for="{{ $genre['genre_id'] }}">
                     <input type="checkbox" name="genre_id[]" id="{{ $genre['genre_id'] }}" value="{{$genre['genre_id']}}" />
-                    {{ $genre['genre_name'] }}
+                    {{ $genre['name'] }}
                 </label>
                 @if ($genre['is_use'])
                     <small>データあり</small>   

@@ -18,7 +18,7 @@ class RakutenGenreService
             $children = [];
             foreach ($response['children'] as $value) {
                 $child = $value['child'];
-                $children[] = ['genre_id' => $child['genreId'], 'genre_name' => $child['genreName']];
+                $children[] = ['genre_id' => $child['genreId'], 'name' => $child['genreName']];
             }
             $genre = new Genre;
             $genre->trancateAndCreate($children);

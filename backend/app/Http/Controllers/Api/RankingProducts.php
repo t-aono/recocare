@@ -9,7 +9,7 @@ use App\Models\Effect;
 
 class RankingProducts extends Controller
 {
-    /**
+    /** 
      * ジャンルと効果と成分データをもとに商品をランキングする
      *
      * @param  \Illuminate\Http\Request  $request

@@ -1,8 +1,10 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
+import useSWR from "swr";
 import { FormControl, FormLabel } from "@chakra-ui/react";
 import { HStack } from "@chakra-ui/layout";
 import { Radio, RadioGroup } from "@chakra-ui/radio";
+import { Center } from "@chakra-ui/react";
+import { Spinner } from "@chakra-ui/spinner";
+import { Grid, GridItem } from "@chakra-ui/react";
 
 import styles from "../../MainStyles.module.css";
 
@@ -11,32 +13,36 @@ export const CategoryRadio = (props) => {
 
   const onChangeRadio = (e) => setCategory(e);
 
-  const [genres, setGenres] = useState([]);
+  const url = `${process.env.REACT_APP_BACKEND_HOST}api/genre`;
+  const fetcher = (arg) => fetch(arg).then((res) => res.json());
+  const { data, error } = useSWR(url, fetcher);
 
-  useEffect(() => {
-    axios
-      .get(`${process.env.REACT_APP_BACKEND_HOST}api/genre`)
-      .then((res) => setGenres(res.data));
-  }, []);
+  if (error) return <Center>データのアクセスに失敗しました。</Center>;
 
   return (
     <FormControl as="fieldset" isRequired mt="5">
       <FormLabel as="legend" className={styles.questionTitle}>
         カテゴリ
       </FormLabel>
-      {/* <Radio value="クレンジング">クレンジング</Radio> */}
-      {genres.length > 0 &&
-        genres.map((genre) => (
-          <RadioGroup
-            value={category}
-            onChange={(e) => onChangeRadio(e)}
-            key={genre["id"]}
-          >
-            <HStack spacing="24px">
-              <Radio value={genre["id"]}>{genre["genre_name"]}</Radio>
-            </HStack>
-          </RadioGroup>
-        ))}
+      {data ? (
+        <Grid templateColumns="repeat(3, 1fr)" gap={6}>
+          {data.map((genre) => (
+            <RadioGroup
+              value={category}
+              onChange={(e) => onChangeRadio(e)}
+              key={genre["id"]}
+            >
+              <HStack spacing="24px">
+                <Radio value={genre["genre_id"]}>{genre["name"]}</Radio>
+              </HStack>
+            </RadioGroup>
+          ))}
+        </Grid>
+      ) : (
+        <Center align="center">
+          <Spinner />
+        </Center>
+      )}
     </FormControl>
   );
 };
