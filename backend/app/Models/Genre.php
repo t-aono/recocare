@@ -10,7 +10,7 @@ class Genre extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['genre_id', 'genre_name', 'is_use'];
+    protected $fillable = ['genre_id', 'name', 'is_use'];
 
     public function trancateAndCreate($children)
     {

@@ -4,14 +4,17 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Component;
+use App\Models\Effect;
 
 class ComponentController extends Controller
 {
     public function index()
     {
         $componet = new Component;
-        $list = $componet->getComponentEffectList();
-        return view('component.index', compact('list'));
+        $components = $componet->getComponentEffectList();
+        $effects = Effect::all()->toArray();
+
+        return view('component.index', compact('components', 'effects'));
     }
 
     public function store(Request $request)
@@ -33,6 +36,16 @@ class ComponentController extends Controller
             if ($index === 0) continue;
             $componet->saveComponentEffect($line);
         }
+
+        return redirect()->route('component.index');
+    }
+
+    public function update(Request $request)
+    {
+        $effect = Effect::find($request['effect']);
+        Effect::where('id', $request['effect'])->update([
+            'is_use' => ($effect->is_use == 1) ? 0 : 1
+        ]);
 
         return redirect()->route('component.index');
     }

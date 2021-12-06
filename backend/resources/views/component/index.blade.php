@@ -9,6 +9,12 @@
         .color-red {
             color: darkred;
         }
+        li {
+            display: flex;
+            width: 50%;
+            column-gap: 50px;
+            margin-bottom: 10px;
+        }
     </style>
 </head>
 <body>
@@ -31,20 +37,42 @@
             <input type="file" name="csv">
             <input type="submit" name="apply" value="適用">
         </form>
+            
 
-        <table>
-            <tr>
-                <th>成分</th>
-                <th>効果</th>
-            </tr>
-            @foreach ($list as $row)
+        <form method="post" action="{{ route('component.update') }}">
+            @csrf
+            <ul>
+                @foreach ($effects as $effect)
+                <li>
+                    <button name="effect" value="{{ $effect['id'] }}">
+                        @if ($effect['is_use'])
+                            解除
+                        @else
+                            適用
+                        @endif
+                    </button>
+                    {{$effect['name']}}
+                    @if ($effect['is_use']) <span>◯</span> @endif
+                </li>
+                @endforeach
+            </ul>
+        </form>
+
+        @if ($components)
+            <table>
                 <tr>
-                    <td>{{ $row['component'] }}</td>
-                    <td>{{ implode(', ', $row['effects']) }}
-                    </td>
+                    <th>成分</th>
+                    <th>効果</th>
                 </tr>
-            @endforeach
-        </table>
+                @foreach ($components as $row)
+                    <tr>
+                        <td>{{ $row['component'] }}</td>
+                        <td>{{ implode(', ', $row['effects']) }}
+                        </td>
+                    </tr>
+                @endforeach
+            </table>
+        @endif
     </div>
 </body>
 </html>

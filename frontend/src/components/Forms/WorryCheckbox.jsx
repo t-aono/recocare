@@ -1,6 +1,10 @@
-import { FormControl, FormLabel } from "@chakra-ui/react"
-import { HStack } from "@chakra-ui/layout";
+import useSWR from "swr";
+import { FormControl, FormLabel } from "@chakra-ui/react";
 import { Checkbox, CheckboxGroup } from "@chakra-ui/checkbox";
+import { Center } from "@chakra-ui/layout";
+import { Spinner } from "@chakra-ui/spinner";
+import { Grid, GridItem } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/layout";
 
 import styles from "../../MainStyles.module.css";
 
@@ -9,28 +13,35 @@ export const WorryCheckbox = (props) => {
 
   const onChangeCheckbox = (e) => setWorry(e);
 
+  const url = `${process.env.REACT_APP_BACKEND_HOST}api/effect`;
+  const fetcher = (arg) => fetch(arg).then((res) => res.json());
+  const { data, error } = useSWR(url, fetcher);
+
+  if (error) return <Center>データのアクセスに失敗しました。</Center>;
+
   return (
     <FormControl as="fieldset" mt="5">
-      <FormLabel as="legend" className={styles.questionTitle}>お悩み・効果</FormLabel>
-      <CheckboxGroup value={worry} onChange={onChangeCheckbox}>
-        <HStack spacing="24px">
-          <Checkbox value="油分を防ぐ">油分を防ぐ</Checkbox>
-          <Checkbox value="潤い・乾燥を防ぐ">潤い・乾燥を防ぐ</Checkbox>
-          <Checkbox value="キメを細かく">キメを細かく</Checkbox>
-          <Checkbox value="毛穴をなくす">毛穴をなくす</Checkbox>
-        </HStack>
-        <HStack>
-          <Checkbox value="ハリを出す">ハリを出す</Checkbox>
-          <Checkbox value="シミを防ぐ">シミを防ぐ</Checkbox>
-          <Checkbox value="美白">美白</Checkbox>
-          <Checkbox value="油性肌予防">油性肌予防</Checkbox>
-        </HStack>
-        <HStack>
-          <Checkbox value="思春期ニキビ予防">思春期ニキビ予防</Checkbox>
-          <Checkbox value="大人ニキビ予防">大人ニキビ予防</Checkbox>
-          <Checkbox value="エイジングケア">エイジングケア</Checkbox>
-        </HStack>
-      </CheckboxGroup>
+      <FormLabel as="legend" className={styles.questionTitle}>
+        お悩み
+      </FormLabel>
+      {data ? (
+        <Grid
+          templateColumns="repeat(3, 1fr)"
+          gap={6}
+          value={worry}
+          onChange={onChangeCheckbox}
+        >
+          {data.map((effect) => (
+            <GridItem spacing="24px" key={effect["id"]}>
+              <Checkbox value={effect["id"]}>{effect["name"]}</Checkbox>
+            </GridItem>
+          ))}
+        </Grid>
+      ) : (
+        <Center align="center">
+          <Spinner />
+        </Center>
+      )}
     </FormControl>
   );
-}
+};

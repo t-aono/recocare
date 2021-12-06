@@ -7,51 +7,53 @@ import { useHistory } from "react-router-dom";
 import styles from "../MainStyles.module.css";
 import { CategoryRadio } from "./Forms/CategoryRadio";
 import { PriceRadio } from "./Forms/PriceRadio";
-import { SkinRadio } from "./Forms/SkinRadio";
 import { WorryCheckbox } from "./Forms/WorryCheckbox";
-import { SensitiveRadioCheck } from "./Forms/SensitiveRadioCheck";
 
 export const QuestionForm = () => {
   const history = useHistory();
-  const [category, setCategory] = useState('');
-  const [price, setPrice] = useState('');
-  const [skin, setSkin] = useState('');
-  const [worry, setWorry] = useState('');
-  const [sensitive, setSensitive] = useState('');
-  const [feature, setFeature] = useState('');
+  const [category, setCategory] = useState("");
+  const [price, setPrice] = useState("");
+  const [worry, setWorry] = useState("");
 
   const toast = useToast();
 
   const checkAnswer = () => {
-    if (!category || !skin || !sensitive) {
+    if (!category) {
       toast({
         title: "必須項目のうち未入力があります！",
-        description: "右上に * のある項目は必須です。",
+        description: "必須項目が未選択です。",
         status: "warning",
         duration: 3000,
         isClosable: true,
-      })
+      });
     } else {
       history.push({
-        pathname: '/ranking',
-        state: { category, price, skin, worry, sensitive, feature }
-      })
+        pathname: "/ranking",
+        state: { category, price, worry },
+      });
     }
-  }
+  };
 
   return (
     <>
       <Box className={styles.mainFontColor} minW="570px">
-        <Heading as="h3" my="3">アンケート</Heading>
+        <Heading as="h3" my="3">
+          アンケート
+        </Heading>
         <CategoryRadio category={category} setCategory={setCategory} />
-        <PriceRadio price={price} setPrice={setPrice} />
-        <SkinRadio skin={skin} setSkin={setSkin} />
         <WorryCheckbox worry={worry} setWorry={setWorry} />
-        <SensitiveRadioCheck sensitive={sensitive} setSensitive={setSensitive} feature={feature} setFeature={setFeature} />
+        <PriceRadio price={price} setPrice={setPrice} />
       </Box>
       <Center mt="10">
-        <Button colorScheme="teal" size="lg" variant="ghost" onClick={checkAnswer}>回答する</Button>
+        <Button
+          colorScheme="teal"
+          size="lg"
+          variant="ghost"
+          onClick={checkAnswer}
+        >
+          回答する
+        </Button>
       </Center>
     </>
   );
-}
+};
