@@ -3,7 +3,7 @@ import { useHistory, useLocation, Link } from "react-router-dom";
 import { Box, Center, Heading } from "@chakra-ui/layout";
 import { Button } from "@chakra-ui/button";
 import { Spinner } from "@chakra-ui/spinner";
-import { Table, Tbody, Td, Tr } from "@chakra-ui/table";
+import { Table, Tbody, Th, Td, Tr } from "@chakra-ui/table";
 
 import styles from "../MainStyles.module.css";
 
@@ -46,6 +46,17 @@ export const Ranking = () => {
       .catch((err) => setError(err));
   }, [url, param]);
 
+  const goBack = () => {
+    history.push({
+      pathname: "/",
+      state: {
+        genre: location.state.genre,
+        effects: location.state.effect,
+        price: location.state.price,
+      },
+    });
+  };
+
   if (error) return <Center>データのアクセスに失敗しました。</Center>;
   if (data.length === 0 && !error)
     return (
@@ -64,15 +75,16 @@ export const Ranking = () => {
         {data === "no-data" ? (
           <Center my="10">該当なし</Center>
         ) : (
-          <Table my="8">
+          <Table size="sm" my="8">
             <Tbody>
               {data.map((item, index) => (
                 <Tr key={index}>
-                  <Td>{index + 1} 位</Td>
+                  <Th fontSize="md">{index + 1} 位</Th>
                   <Td>
                     <Link to="" className={styles.productLink}>
                       【p: {item.point}】　{item.name}
                     </Link>
+                    <div>{item.price}</div>
                   </Td>
                 </Tr>
               ))}
@@ -85,7 +97,8 @@ export const Ranking = () => {
           colorScheme="teal"
           size="lg"
           variant="ghost"
-          onClick={() => history.goBack()}
+          mb="10"
+          onClick={goBack}
         >
           戻る
         </Button>

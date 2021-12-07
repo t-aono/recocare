@@ -28,9 +28,16 @@ class RankingProducts extends Controller
 
         $genre_id = $request->input('genre');
         $effects = $request->input('effects');
+        $price = $request->input('price');
         $effect = new Effect;
 
-        $products = Product::where('parent_genre_id', $genre_id)->get();
+        if ($price === '10001') {
+            $products = Product::where('parent_genre_id', $genre_id)->where('price', '>=', $price)->get();
+        } elseif ($price) {
+            $products = Product::where('parent_genre_id', $genre_id)->where('price', '<', $price)->get();
+        } else {
+            $products = Product::where('parent_genre_id', $genre_id)->get();
+        }
         $result = [];
         foreach ($products as $product) {
             $point = 0;

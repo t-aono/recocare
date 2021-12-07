@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Center, Heading, Box } from "@chakra-ui/layout";
 import { Button } from "@chakra-ui/button";
 import { useToast } from "@chakra-ui/toast";
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 
 import styles from "../MainStyles.module.css";
 import { CategoryRadio } from "./Forms/CategoryRadio";
@@ -11,11 +11,13 @@ import { WorryCheckbox } from "./Forms/WorryCheckbox";
 
 export const QuestionForm = () => {
   const history = useHistory();
+  const location = useLocation();
+  const toast = useToast();
   const [category, setCategory] = useState("");
   const [price, setPrice] = useState("");
   const [worry, setWorry] = useState([]);
 
-  const toast = useToast();
+  console.log(location.state);
 
   const checkAnswer = () => {
     if (!category || !worry.length) {

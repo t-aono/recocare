@@ -9,7 +9,7 @@ import styles from "../../MainStyles.module.css";
 
 export const WorryCheckbox = (props) => {
   const { worry, setWorry } = props;
-  console.log(worry);
+
   const onChangeCheckbox = (e) => setWorry([...worry, e.target.value]);
 
   const url = `${process.env.REACT_APP_BACKEND_HOST}api/effect`;
