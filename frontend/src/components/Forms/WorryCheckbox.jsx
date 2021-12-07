@@ -1,16 +1,15 @@
 import useSWR from "swr";
 import { FormControl, FormLabel } from "@chakra-ui/react";
-import { Checkbox, CheckboxGroup } from "@chakra-ui/checkbox";
+import { Checkbox } from "@chakra-ui/checkbox";
 import { Center } from "@chakra-ui/layout";
 import { Spinner } from "@chakra-ui/spinner";
 import { Grid, GridItem } from "@chakra-ui/react";
-import { Box } from "@chakra-ui/layout";
 
 import styles from "../../MainStyles.module.css";
 
 export const WorryCheckbox = (props) => {
   const { worry, setWorry } = props;
-
+  console.log(worry);
   const onChangeCheckbox = (e) => setWorry(e);
 
   const url = `${process.env.REACT_APP_BACKEND_HOST}api/effect`;
@@ -25,14 +24,14 @@ export const WorryCheckbox = (props) => {
         お悩み
       </FormLabel>
       {data ? (
-        <Grid
-          templateColumns="repeat(3, 1fr)"
-          gap={6}
-          value={worry}
-          onChange={onChangeCheckbox}
-        >
+        <Grid templateColumns="repeat(3, 1fr)" gap={6}>
           {data.map((effect) => (
-            <GridItem spacing="24px" key={effect["id"]}>
+            <GridItem
+              spacing="24px"
+              key={effect["id"]}
+              // value={worry}
+              // onChange={onChangeCheckbox}
+            >
               <Checkbox value={effect["id"]}>{effect["name"]}</Checkbox>
             </GridItem>
           ))}
