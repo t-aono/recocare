@@ -14,6 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/ranking', \App\Http\Controllers\Api\RankingProducts::class);
+Route::post('/ranking', \App\Http\Controllers\Api\RankingProducts::class);
 Route::get('/genre', \App\Http\Controllers\Api\GenreController::class);
 Route::get('/effect', \App\Http\Controllers\Api\EffectController::class);

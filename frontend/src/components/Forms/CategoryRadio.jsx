@@ -10,7 +10,7 @@ import styles from "../../MainStyles.module.css";
 
 export const CategoryRadio = (props) => {
   const { category, setCategory } = props;
-  console.log(category);
+
   const onChangeRadio = (e) => setCategory(e);
 
   const url = `${process.env.REACT_APP_BACKEND_HOST}api/genre`;
