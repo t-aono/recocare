@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Effect;
+use Illuminate\Support\Facades\Validator;
 
 class RankingProducts extends Controller
 {
@@ -17,13 +18,17 @@ class RankingProducts extends Controller
      */
     public function __invoke(Request $request)
     {
-        $request->validate(['genre' => 'required']);
-        $request->validate(['effect' => 'required']);
-        $genre_id = $request->input('genre');
-        $effect_id = $request->input('effect');
+        $validator = Validator::make($request->all(), [
+            'genre' => 'required',
+            'effects' => 'required'
+        ]);
+        if ($validator->fails()) {
+            return response()->json(['error' => 'parameter incorrect.']);
+        }
 
+        $genre_id = $request->input('genre');
+        $effects = $request->input('effects');
         $effect = new Effect;
-        $components = $effect->getComponentNames($effect_id);
 
         $products = Product::where('parent_genre_id', $genre_id)->get();
         $result = [];
@@ -34,17 +39,20 @@ class RankingProducts extends Controller
                 preg_match("/成分.+/", $product->caption, $ingredient);
             }
             if ($effctive) {
-                foreach ($components as $component) {
-                    if (strpos($effctive[0], $component) !== false) $point++;
+                foreach ($effects as $effect_id) {
+                    $components = $effect->getComponentNames($effect_id);
+                    foreach ($components as $component) {
+                        if (strpos($effctive[0], $component) !== false) $point++;
+                    }
                 }
             }
             $result[] = array_merge($product->toArray(), ['point' => $point]);
         }
+
         usort($result, function ($a, $b) {
             return $b['point'] - $a['point'];
         });
 
-        // dd($result);
-        return response()->json($result);
+        return response()->json(['data' => $result]);
     }
 }

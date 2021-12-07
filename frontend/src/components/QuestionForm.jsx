@@ -13,15 +13,14 @@ export const QuestionForm = () => {
   const history = useHistory();
   const [category, setCategory] = useState("");
   const [price, setPrice] = useState("");
-  const [worry, setWorry] = useState("");
+  const [worry, setWorry] = useState([]);
 
   const toast = useToast();
 
   const checkAnswer = () => {
-    if (!category) {
+    if (!category || !worry.length) {
       toast({
-        title: "必須項目のうち未入力があります！",
-        description: "必須項目が未選択です。",
+        title: "必須項目が未選択です。",
         status: "warning",
         duration: 3000,
         isClosable: true,
@@ -29,8 +28,7 @@ export const QuestionForm = () => {
     } else {
       history.push({
         pathname: "/ranking",
-        // state: { category, price, worry },
-        state: { category, price },
+        state: { genre: category, price: price, effect: worry },
       });
     }
   };
