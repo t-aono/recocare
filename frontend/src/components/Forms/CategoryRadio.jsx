@@ -4,13 +4,13 @@ import { HStack } from "@chakra-ui/layout";
 import { Radio, RadioGroup } from "@chakra-ui/radio";
 import { Center } from "@chakra-ui/react";
 import { Spinner } from "@chakra-ui/spinner";
-import { Grid, GridItem } from "@chakra-ui/react";
+import { Grid } from "@chakra-ui/react";
 
 import styles from "../../MainStyles.module.css";
 
 export const CategoryRadio = (props) => {
   const { category, setCategory } = props;
-
+  console.log(category);
   const onChangeRadio = (e) => setCategory(e);
 
   const url = `${process.env.REACT_APP_BACKEND_HOST}api/genre`;

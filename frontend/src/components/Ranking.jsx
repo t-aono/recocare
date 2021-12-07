@@ -1,6 +1,5 @@
-import { useHistory, useLocation } from "react-router";
+import { useHistory, useLocation, Link } from "react-router-dom";
 import useSWR from "swr";
-import { Link } from "react-router-dom";
 import { Box, Center, Heading } from "@chakra-ui/layout";
 import { Button } from "@chakra-ui/button";
 import { Spinner } from "@chakra-ui/spinner";
@@ -12,15 +11,16 @@ export const Ranking = () => {
   const history = useHistory();
   const location = useLocation();
 
-  // let url = process.env.REACT_APP_DATA_DIR + "getrank.php?";
   let url = `${process.env.REACT_APP_BACKEND_HOST}api/ranking`;
-  for (let key in location.state) {
-    let value = encodeURI(location.state[key]);
-    url += `${key}=${value}&`;
-    console.log(url);
-  }
+  // for (let key in location.state) {
+  //   let value = encodeURI(location.state[key]);
+  //   url += `${key}=${value}&`;
+  // }
+  console.log(location);
+  return "";
 
-  const fetcher = (arg) => fetch(arg).then((res) => res.json());
+  const fetcher = (arg) =>
+    fetch(arg, { mode: "cors" }).then((res) => res.json());
   const { data, error } = useSWR(url, fetcher);
 
   if (error) return <Center>データのアクセスに失敗しました。</Center>;

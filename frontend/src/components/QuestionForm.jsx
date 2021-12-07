@@ -29,7 +29,8 @@ export const QuestionForm = () => {
     } else {
       history.push({
         pathname: "/ranking",
-        state: { category, price, worry },
+        // state: { category, price, worry },
+        state: { category, price },
       });
     }
   };
