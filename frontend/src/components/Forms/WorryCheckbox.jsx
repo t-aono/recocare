@@ -10,7 +10,18 @@ import styles from "../../MainStyles.module.css";
 export const WorryCheckbox = (props) => {
   const { worry, setWorry } = props;
 
-  const onChangeCheckbox = (e) => setWorry([...worry, e.target.value]);
+  const onChangeCheckbox = (e) => {
+    const index = worry.indexOf(e.target.value);
+    let checked = [];
+    if (index < 0) {
+      checked = [...worry, e.target.value];
+      setWorry(checked);
+    } else {
+      checked = worry;
+      checked.splice(index, 1);
+      setWorry([...checked]);
+    }
+  }
 
   const url = `${process.env.REACT_APP_BACKEND_HOST}api/effect`;
   const fetcher = (arg) => fetch(arg).then((res) => res.json());
@@ -26,8 +37,8 @@ export const WorryCheckbox = (props) => {
       {data ? (
         <Grid templateColumns="repeat(3, 1fr)" gap={6}>
           {data.map((effect) => (
-            <GridItem spacing="24px" key={effect["id"]} value={worry}>
-              <Checkbox value={effect["id"]} onChange={onChangeCheckbox}>
+            <GridItem spacing="24px" key={effect["id"]} value={worry} >
+              <Checkbox value={effect["id"]} onChange={onChangeCheckbox} isChecked={worry.includes(String(effect["id"]))} >
                 {effect["name"]}
               </Checkbox>
             </GridItem>

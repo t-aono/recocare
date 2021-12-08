@@ -19,7 +19,7 @@ export const Ranking = () => {
   const ansewer = useMemo(() => {
     return {
       genre: location.state.genre,
-      effects: location.state.effect,
+      effects: location.state.effects,
       price: location.state.price,
     };
   }, [location]);
@@ -51,7 +51,7 @@ export const Ranking = () => {
       pathname: "/",
       state: {
         genre: location.state.genre,
-        effects: location.state.effect,
+        effects: location.state.effects,
         price: location.state.price,
       },
     });
