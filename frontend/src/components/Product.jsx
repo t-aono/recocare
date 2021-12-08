@@ -1,8 +1,10 @@
-import { useHistory, useParams } from "react-router";
+import { useHistory, useParams } from "react-router-dom";
+import { Link } from '@chakra-ui/react'
 import useSWR from "swr";
-import { Box, Center, Heading, StackDivider, VStack } from "@chakra-ui/layout";
+import { Box, Center, Heading, Flex } from "@chakra-ui/layout";
 import { Button } from "@chakra-ui/button";
-import { Spinner } from "@chakra-ui/spinner";
+import { SkeletonText } from "@chakra-ui/skeleton";
+import { ArrowBackIcon, ExternalLinkIcon } from "@chakra-ui/icons";
 
 import styles from "../MainStyles.module.css";
 import { Image } from "@chakra-ui/image";
@@ -15,26 +17,33 @@ export const Product = () => {
   const fetcher = (arg) => fetch(arg).then((res) => res.json());
   const { data, error } = useSWR(url, fetcher);
 
-  console.log(data, error)
+  let createdDate = "";
+  if (data && data.created_at) {
+    const date = new Date(data.created_at);
+    createdDate = date.getFullYear() + "/" + (date.getMonth() + 1) + "/" + date.getDate();
+  }
 
   if (error) return <Center>データのアクセスに失敗しました。</Center>;
   if (!data)
     return (
-      <Center align="center" h="100vh">
-        <Spinner />
-      </Center>
+      <SkeletonText
+        mt="10"
+        mb="10"
+        pt="5"
+        pb="5"
+        startColor="teal.300"
+        endColor="teal.100"
+      ></SkeletonText>
     );
 
   return (
     <>
       <Box className={styles.mainFontColor} w="100%">
         <Heading as="h3" my="3">
-          商品紹介ページ
+          商品紹介
         </Heading>
-        {data.length === 0 ? (
-          <Center my={8}>該当データがありません。</Center>
-        ) : (
-          <Box>
+        <Flex mt={7} mb={10}>
+          <Box className={styles.flexGrow}>
             <Image
               src={data.image_url}
               alt={data.name}
@@ -42,18 +51,47 @@ export const Product = () => {
               w="100%"
               borderRadius="lg"
             />
-
-            <Box h="10px">{data.name}</Box>
           </Box>
-        )}
+          <Box ml="5" w="70%">
+            <Box fontWeight="bold">商品名</Box>
+            <Box>{data.name}</Box>
+            <Flex justifyContent="space-between" pt="5">
+              <Box>
+                <Box fontWeight="bold">価格</Box>
+                <Box fontSize="sm">
+                  {data.price.toLocaleString("ja-JP", {
+                    style: "currency",
+                    currency: "JPY",
+                  })}
+                </Box>
+              </Box>
+              <Box>
+                <Box fontWeight="bold">登録日</Box>
+                <Box>{createdDate}</Box>
+              </Box>
+              <Box>
+                <Link href={data.rakuten_url} isExternal={true} >
+                  <Button colorScheme="red" variant="outline">
+                    楽天で見る
+                    <ExternalLinkIcon mx='2px' />
+                  </Button>
+                </Link>
+              </Box>
+            </Flex>
+          </Box>
+        </Flex>
+        <Box fontWeight="bold">商品説明</Box>
+        <Box>{data.caption}</Box>
       </Box>
       <Center mt="10">
         <Button
           colorScheme="teal"
           size="lg"
-          variant="ghost"
+          mb="10"
+          variant="link"
           onClick={() => history.goBack()}
         >
+          <ArrowBackIcon w="7" h="7" />
           戻る
         </Button>
       </Center>
