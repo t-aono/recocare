@@ -23,7 +23,7 @@ export const QuestionForm = () => {
       if (location.state.price) setPrice(location.state.price);
       if (location.state.effects) setWorry(location.state.effects);
     }
-  }, []);
+  }, [location]);
 
   const checkAnswer = () => {
     if (!category || !worry.length) {
