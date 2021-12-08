@@ -21,7 +21,7 @@ export const WorryCheckbox = (props) => {
       checked.splice(index, 1);
       setWorry([...checked]);
     }
-  }
+  };
 
   const url = `${process.env.REACT_APP_BACKEND_HOST}api/effect`;
   const fetcher = (arg) => fetch(arg).then((res) => res.json());
@@ -37,8 +37,16 @@ export const WorryCheckbox = (props) => {
       {data ? (
         <Grid templateColumns="repeat(3, 1fr)" gap={6}>
           {data.map((effect) => (
-            <GridItem spacing="24px" key={effect["id"]} value={worry} >
-              <Checkbox value={effect["id"]} onChange={onChangeCheckbox} isChecked={worry.includes(String(effect["id"]))} >
+            <GridItem
+              spacing="24px"
+              key={effect["id"]}
+              value={worry}
+            >
+              <Checkbox
+                value={effect["id"]}
+                onChange={onChangeCheckbox}
+                isChecked={worry.includes(String(effect["id"]))}
+              >
                 {effect["name"]}
               </Checkbox>
             </GridItem>

@@ -5,16 +5,17 @@ import { Button } from "@chakra-ui/button";
 import { Spinner } from "@chakra-ui/spinner";
 
 import styles from "../MainStyles.module.css";
+import { Image } from "@chakra-ui/image";
 
 export const Product = () => {
   const history = useHistory();
-  const params = useParams();
+  const { id } = useParams();
 
-  let url = `http://samp20.starfree.jp/cosmetic-rank-data/getjan.php?jan=${params.jan}`;
-
-  const fetcher = (arg) =>
-    fetch(arg, { mode: "cors" }).then((res) => res.json());
+  const url = `${process.env.REACT_APP_BACKEND_HOST}api/product/${id}`;
+  const fetcher = (arg) => fetch(arg).then((res) => res.json());
   const { data, error } = useSWR(url, fetcher);
+
+  console.log(data, error)
 
   if (error) return <Center>データのアクセスに失敗しました。</Center>;
   if (!data)
@@ -30,19 +31,20 @@ export const Product = () => {
         <Heading as="h3" my="3">
           商品紹介ページ
         </Heading>
-        {data === "no-data" ? (
+        {data.length === 0 ? (
           <Center my={8}>該当データがありません。</Center>
         ) : (
-          <VStack
-            divider={<StackDivider borderColor="gray.200" />}
-            spacing={4}
-            align="stretch"
-            my={8}
-          >
-            {data.map((da) => (
-              <Box h="10px">{da}</Box>
-            ))}
-          </VStack>
+          <Box>
+            <Image
+              src={data.image_url}
+              alt={data.name}
+              objectFit="contain"
+              w="100%"
+              borderRadius="lg"
+            />
+
+            <Box h="10px">{data.name}</Box>
+          </Box>
         )}
       </Box>
       <Center mt="10">

@@ -19,7 +19,7 @@ function App() {
             <Route path="/ranking">
               <Ranking />
             </Route>
-            <Route path="/product/:jan">
+            <Route path="/product/:id">
               <Product />
             </Route>
             <Route path="*">
