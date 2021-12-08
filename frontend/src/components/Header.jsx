@@ -1,12 +1,6 @@
-import { useHistory } from "react-router-dom";
 import { Flex, Heading, Box, Spacer } from "@chakra-ui/react";
 
 export const Header = () => {
-  const history = useHistory();
-
-  const onClickTop = () => {
-    history.push("/");
-  };
 
   return (
     <Flex
@@ -18,11 +12,10 @@ export const Header = () => {
       px="20px"
       align="center"
     >
-      <Box as="a" _hover={{ cursor: "pointer" }}>
+      <Box as="a" href="/" _hover={{ cursor: "pointer" }}>
         <Heading
           as="h1"
           fontSize={{ base: "md", md: "lg" }}
-          onClick={onClickTop}
           color="white"
         >
           Cosmetic Rank

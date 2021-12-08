@@ -62,8 +62,9 @@ export const Ranking = () => {
   if (data.length === 0 && !error)
     return (
       <Box>
-        {[...Array(10)].map(() => (
+        {[...Array(10)].map((value, index) => (
           <SkeletonText
+            key={index}
             mt="10"
             mb="10"
             pt="5"
@@ -90,9 +91,11 @@ export const Ranking = () => {
               <Box className={styles.flexGrow}>
                 <Image
                   src={item.image_url}
+                  fallbackSrc='https://via.placeholder.com/150'
                   alt={item.name}
                   objectFit="contain"
                   w="100%"
+                  h="10em"
                   borderRadius="lg"
                 />
               </Box>
