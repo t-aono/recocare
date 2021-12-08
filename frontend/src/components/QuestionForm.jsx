@@ -54,8 +54,8 @@ export const QuestionForm = () => {
       <Center mt="10">
         <Button
           colorScheme="teal"
+          variant="outline"
           size="lg"
-          variant="ghost"
           onClick={checkAnswer}
         >
           回答する

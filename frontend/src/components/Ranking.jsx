@@ -2,9 +2,9 @@ import React, { useEffect, useMemo, useState } from "react";
 import { useHistory, useLocation, Link } from "react-router-dom";
 import { Box, Center, Flex, Heading, Spacer } from "@chakra-ui/layout";
 import { Button } from "@chakra-ui/button";
-import { Spinner } from "@chakra-ui/spinner";
-import { Table, Tbody, Th, Td, Tr } from "@chakra-ui/table";
+import { SkeletonText } from "@chakra-ui/skeleton";
 import { Image } from "@chakra-ui/image";
+import { ArrowBackIcon } from "@chakra-ui/icons";
 
 import styles from "../MainStyles.module.css";
 
@@ -61,9 +61,18 @@ export const Ranking = () => {
   if (error) return <Center>データのアクセスに失敗しました。</Center>;
   if (data.length === 0 && !error)
     return (
-      <Center align="center" h="100vh">
-        <Spinner />
-      </Center>
+      <Box>
+        {[...Array(10)].map(() => (
+          <SkeletonText
+            mt="10"
+            mb="10"
+            pt="5"
+            pb="5"
+            startColor="teal.300"
+            endColor="teal.100"
+          ></SkeletonText>
+        ))}
+      </Box>
     );
 
   return (
@@ -74,7 +83,7 @@ export const Ranking = () => {
         </Heading>
         {error ? error : ""}
         {data.length === 0 ? (
-          < Center my="10">該当なし</Center>
+          <Center my="10">該当なし</Center>
         ) : (
           data.map((item, index) => (
             <Flex key={index} mt={7} mb={10}>
@@ -91,23 +100,35 @@ export const Ranking = () => {
                 <Box>{index + 1} 位</Box>
                 <Box>{item.name}</Box>
                 <Flex>
-                  <Box fontSize="sm">{item.price.toLocaleString("ja-JP", { style: "currency", currency: "JPY" })}</Box>
+                  <Box fontSize="sm">
+                    {item.price.toLocaleString("ja-JP", {
+                      style: "currency",
+                      currency: "JPY",
+                    })}
+                  </Box>
                   <Spacer />
                   <Box fontSize="sm">{item.point} points</Box>
                 </Flex>
                 <Center>
                   <Link to={"/product/" + item.id}>
-                    <Button colorScheme="teal" size="sm">
+                    <Button colorScheme="teal" size="sm" variant="outline">
                       詳細を見る
                     </Button>
                   </Link>
                 </Center>
               </Box>
-            </Flex>)
-          )
+            </Flex>
+          ))
         )}
-        < Center mt="10" >
-          <Button colorScheme="teal" size="lg" variant="ghost" mb="10" onClick={goBack} >
+        <Center mt="10">
+          <Button
+            colorScheme="teal"
+            size="lg"
+            variant="link"
+            mb="10"
+            onClick={goBack}
+          >
+            <ArrowBackIcon w="7" h="7" />
             戻る
           </Button>
         </Center>
