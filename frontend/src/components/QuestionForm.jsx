@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Center, Heading, Box } from "@chakra-ui/layout";
 import { Button } from "@chakra-ui/button";
 import { useToast } from "@chakra-ui/toast";
@@ -14,10 +14,16 @@ export const QuestionForm = () => {
   const location = useLocation();
   const toast = useToast();
   const [category, setCategory] = useState("");
-  const [price, setPrice] = useState("");
   const [worry, setWorry] = useState([]);
+  const [price, setPrice] = useState("");
 
-  console.log(location.state);
+  useEffect(() => {
+    if (location.state) {
+      if (location.state.genre) setCategory(location.state.genre);
+      if (location.state.price) setPrice(location.state.price);
+      if (location.state.effects) setWorry(location.state.effects);
+    }
+  }, []);
 
   const checkAnswer = () => {
     if (!category || !worry.length) {
@@ -30,7 +36,7 @@ export const QuestionForm = () => {
     } else {
       history.push({
         pathname: "/ranking",
-        state: { genre: category, price: price, effect: worry },
+        state: { genre: category, price: price, effects: worry },
       });
     }
   };
