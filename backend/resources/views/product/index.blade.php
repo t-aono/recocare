@@ -39,7 +39,7 @@
             <li>
                 <label for="{{ $genre['genre_id'] }}">
                     <input type="checkbox" name="genre_id[]" id="{{ $genre['genre_id'] }}" value="{{$genre['genre_id']}}" />
-                    {{ $genre['genre_name'] }}
+                    {{ $genre['name'] }}
                 </label>
                 @if ($genre['is_use'])
                     <small>データあり</small>   
@@ -49,15 +49,17 @@
         </ul>
         <input type="submit" name="item" value="商品データ更新" />
 
-        @if (isset($products))
-            <table>
-                @foreach ($products as $product)
-                <tr>
-                    <td>{{$product['name']}}</td>
-                </tr>
-                @endforeach
-            </table>
-        @endif
+        <br><br><br>
+        <div>アンケートのカテゴリ（ジャンル）は以下を想定</div>
+        <ul>
+            <li>クレンジング</li>
+            <li>洗顔料</li>
+            <li>化粧水</li>
+            <li>美容液</li>
+            <li>乳液</li>
+            <li>フェイスクリーム</li>
+            <li>フェイスパック</li>
+        </ul>
     </form>
         
 </body>

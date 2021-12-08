@@ -1,0 +1,19 @@
+.mainFontColor {
+  color: #666;
+}
+
+.questionTitle {
+  border-bottom: solid 1px #666;
+}
+
+.featureInactive {
+  color: #ccc;
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+
+.flexGrow {
+  flex: 1;
+}

@@ -3,3 +3,6 @@
 
 # Docker Compose
 .env
+
+# React build
+backend/public/build

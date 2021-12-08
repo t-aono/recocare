@@ -16,6 +16,7 @@ class CreateEffectsTable extends Migration
         Schema::create('effects', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
+            $table->string('is_use')->default(0);
             $table->timestamps();
         });
     }

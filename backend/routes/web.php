@@ -16,12 +16,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
 
 Route::name('component.')->group(function () {
     Route::get('/component', [ComponentController::class, 'index'])->name('index');
     Route::post('/component/store', [ComponentController::class, 'store'])->name('store');
+    Route::post('/component/update', [ComponentController::class, 'update'])->name('update');
 });
 
 Route::name('product.')->group(function () {
