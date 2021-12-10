@@ -1,11 +1,26 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            成分一覧
-        </h2>
-    </x-slot>
-
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>成分一覧</title>
+    <style>
+        .color-red {
+            color: darkred;
+        }
+        li {
+            display: flex;
+            width: 50%;
+            column-gap: 50px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
     <div>
+    <h1>成分一覧</h1>
+
         @if ($errors->any())
             <div class="color-red">
                 <ul>
@@ -59,4 +74,5 @@
             </table>
         @endif
     </div>
-</x-app-layout>
+</body>
+</html>
