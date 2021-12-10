@@ -9,13 +9,15 @@ use App\Services\RakutenItemService;
 
 class ProductController extends Controller
 {
-    public function index() {
+    public function index()
+    {
         $genres = Genre::all();
         return view('product.index', compact('genres'));
     }
 
-    public function update(Request $request) {
-        
+    public function update(Request $request)
+    {
+
         if ($request->input('genre')) {
             $rakutenGenre = new RakutenGenreService;
             $rakutenGenre->updateCosmeGenreChildren(100944);  // スキンケア
@@ -29,5 +31,4 @@ class ProductController extends Controller
 
         return redirect()->route('product.index');
     }
-
 }

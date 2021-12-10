@@ -6,3 +6,7 @@
 
 # React build
 backend/public/build
+
+# Breeze buld
+backend/public/js
+backend/public/css
