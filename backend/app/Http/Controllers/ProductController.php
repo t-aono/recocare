@@ -2,17 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Genre;
 use Illuminate\Http\Request;
 use App\Services\RakutenGenreService;
 use App\Services\RakutenItemService;
+use App\Models\Genre;
+use App\Models\Product;
 
 class ProductController extends Controller
 {
     public function index()
     {
         $genres = Genre::all();
-        return view('product.index', compact('genres'));
+        $result = Product::countProductsByGenre($genres);
+
+        return view('product.index', compact('genres', 'result'));
     }
 
     public function update(Request $request)

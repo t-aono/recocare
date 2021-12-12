@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\ComponentController;
+use App\Http\Controllers\IngredientController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,23 +18,23 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('index');
 });
+
 Route::get('/manage', function () {
     return view('manage.index');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+Route::group(['middleware' => 'auth'], function () {
 
-Route::name('component.')->group(function () {
-    Route::get('/component', [ComponentController::class, 'index'])->name('index');
-    Route::post('/component/store', [ComponentController::class, 'store'])->name('store');
-    Route::post('/component/update', [ComponentController::class, 'update'])->name('update');
-});
+    Route::name('ingredient.')->group(function () {
+        Route::get('/ingredient', [IngredientController::class, 'index'])->name('index');
+        Route::post('/ingredient/store', [IngredientController::class, 'store'])->name('store');
+        Route::post('/ingredient/update', [IngredientController::class, 'update'])->name('update');
+    });
 
-Route::name('product.')->group(function () {
-    Route::get('/product', [ProductController::class, 'index'])->name('index');
-    Route::post('/product/update', [ProductController::class, 'update'])->name('update');
+    Route::name('product.')->group(function () {
+        Route::get('/product', [ProductController::class, 'index'])->name('index');
+        Route::post('/product/update', [ProductController::class, 'update'])->name('update');
+    });
 });
 
 require __DIR__ . '/auth.php';
