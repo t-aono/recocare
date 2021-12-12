@@ -47,9 +47,9 @@ class RankingProducts extends Controller
             }
             if ($effctive) {
                 foreach ($effects as $effect_id) {
-                    $components = $effect->getComponentNames($effect_id);
-                    foreach ($components as $component) {
-                        if (strpos($effctive[0], $component) !== false) $point++;
+                    $ingredients = $effect->getIngredientNames($effect_id);
+                    foreach ($ingredients as $ingredient) {
+                        if (strpos($effctive[0], $ingredient) !== false) $point++;
                     }
                 }
             }

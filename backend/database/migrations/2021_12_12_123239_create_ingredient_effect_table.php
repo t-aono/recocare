@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateComponentEffectTable extends Migration
+class CreateIngredientEffectTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateComponentEffectTable extends Migration
      */
     public function up()
     {
-        Schema::create('component_effect', function (Blueprint $table) {
-            $table->unsignedBigInteger('component_id');
+        Schema::create('ingredient_effect', function (Blueprint $table) {
+            $table->unsignedBigInteger('ingredient_id');
             $table->unsignedBigInteger('effect_id');
 
-            $table->foreign('component_id')->references('id')->on('components');
+            $table->foreign('ingredient_id')->references('id')->on('ingredients');
             $table->foreign('effect_id')->references('id')->on('effects');
         });
     }
@@ -29,6 +29,6 @@ class CreateComponentEffectTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('component_effect');
+        Schema::dropIfExists('ingredient_effect');
     }
 }
