@@ -3,18 +3,18 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Component;
+use App\Models\Ingredient;
 use App\Models\Effect;
 
-class ComponentController extends Controller
+class IngredientController extends Controller
 {
     public function index()
     {
-        $componet = new Component;
-        $components = $componet->getComponentEffectList();
+        $ingredient = new Ingredient();
+        $ingredients = $ingredient->getIngredientEffectList();
         $effects = Effect::all()->toArray();
 
-        return view('component.index', compact('components', 'effects'));
+        return view('ingredient.index', compact('ingredients', 'effects'));
     }
 
     public function store(Request $request)
@@ -22,11 +22,11 @@ class ComponentController extends Controller
         $request->validate(['csv' => 'required']);
 
         if ($request->file('csv')->getMimeType() !== "application/csv") {
-            return redirect()->route("component.index")->withErrors('file type missmatch.');
+            return redirect()->route("ingredient.index")->withErrors('file type missmatch.');
         }
 
-        $componet = new Component;
-        $componet->trancateRelationTable();
+        $ingredient = new Ingredient();
+        $ingredient->trancateRelationTable();
 
         $file_path = $request->file('csv')->path();
         $file = new \SplFileObject($file_path);
@@ -34,10 +34,10 @@ class ComponentController extends Controller
 
         foreach ($file as $index => $line) {
             if ($index === 0) continue;
-            $componet->saveComponentEffect($line);
+            $ingredient->saveIngredientEffect($line);
         }
 
-        return redirect()->route('component.index');
+        return redirect()->route('ingredient.index');
     }
 
     public function update(Request $request)
@@ -47,6 +47,6 @@ class ComponentController extends Controller
             'is_use' => ($effect->is_use == 1) ? 0 : 1
         ]);
 
-        return redirect()->route('component.index');
+        return redirect()->route('ingredient.index');
     }
 }
