@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Component;
+use App\Models\Ingredient;
 
 class Effect extends Model
 {
@@ -12,17 +12,17 @@ class Effect extends Model
 
     protected $fillable = ['name'];
 
-    public function components()
+    public function ingredients()
     {
-        return $this->belongsToMany(Component::class);
+        return $this->belongsToMany(Ingredient::class, 'ingredient_effect');
     }
 
-    public function getComponentNames($id)
+    public function getIngredientNames($id)
     {
-        $components = $this->find($id)->components->toArray();
+        $ingredients = $this->find($id)->ingredients->toArray();
 
-        return array_map(function ($component) {
-            return $component['name'];
-        }, $components);
+        return array_map(function ($ingredient) {
+            return $ingredient['name'];
+        }, $ingredients);
     }
 }

@@ -13,8 +13,8 @@ class Product extends Model
         'item_code', 'name', 'caption', 'price', 'genre_id', 'parent_genre_id', 'rakuten_url', 'image_url'
     ];
 
-    public function itemsStore($items, $parent_genre_id) {
-        
+    public function itemsStore($items, $parent_genre_id)
+    {
         foreach ($items as $value) {
             $item = $value['Item'];
             $record = [];
@@ -26,10 +26,23 @@ class Product extends Model
             $record['parent_genre_id'] = $parent_genre_id;
             $record['rakuten_url'] = $item['itemUrl'];
             $record['image_url'] = ($item['smallImageUrls']) ? $item['smallImageUrls'][0]['imageUrl'] : '';
-            
+
             $this->firstOrCreate(['item_code' => $item['itemCode']], $record);
         }
-
     }
 
+    static public function countProductsByGenre($genres)
+    {
+        $result = [];
+
+        foreach ($genres as $genre) {
+            $result[] = [
+                'name' => $genre->name,
+                'id' => $genre->genre_id,
+                'count' => Product::where('parent_genre_id', $genre->genre_id)->count()
+            ];
+        }
+
+        return $result;
+    }
 }

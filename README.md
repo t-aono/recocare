@@ -55,7 +55,7 @@ etc
 -   サイトからスクレイピング  
     [スプレッドシート「化粧品成分一覧」](https://docs.google.com/spreadsheets/d/1KvcgP5QfpR3PxW7kzyUeMIP1WJ7lY35aNQ1QduyJIkA/edit#gid=0)
 -   csv 出力して成分一覧からインポート  
-    http://localhost/component
+    http://localhost/ingredient
 
 ### ジャンルと商品
 
