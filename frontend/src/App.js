@@ -14,7 +14,7 @@ function App() {
   return (
     <ChakraProvider>
       <Header />
-      <Container className={styles.mainFontColor}>
+      <Container className={styles.mainFontStyle}>
         <BrowserRouter>
           <Switch>
             <Route exact path="/">
