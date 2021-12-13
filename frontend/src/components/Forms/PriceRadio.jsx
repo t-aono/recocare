@@ -11,32 +11,32 @@ export const PriceRadio = (props) => {
 
   return (
     <FormControl as="fieldset" mt="5">
-      <FormLabel as="legend" className={styles.questionTitle}>
-        お値段
+      <FormLabel as="legend" mb='5' borderBottom='solid 1px #ccc'>
+        ご予算はどれくらいですか？
       </FormLabel>
 
       <RadioGroup value={price} onChange={(e) => onChangeRadio(e)}>
-        <Grid templateColumns="repeat(3, 1fr)" gap={6}>
+        <Grid templateColumns="repeat(2, 1fr)" gap={6} w='100vw'>
           <GridItem>
-            <Radio value="1000">~1,000</Radio>
+            <Radio value="1000" colorScheme='orange'>~1,000</Radio>
           </GridItem>
           <GridItem>
-            <Radio value="2000">~2,000</Radio>
+            <Radio value="2000" colorScheme='orange'>~2,000</Radio>
           </GridItem>
           <GridItem>
-            <Radio value="3000">~3,000</Radio>
+            <Radio value="3000" colorScheme='orange'>~3,000</Radio>
           </GridItem>
           <GridItem>
-            <Radio value="5000">~5,000</Radio>
+            <Radio value="5000" colorScheme='orange'>~5,000</Radio>
           </GridItem>
           <GridItem>
-            <Radio value="7000">~7,000</Radio>
+            <Radio value="7000" colorScheme='orange'>~7,000</Radio>
           </GridItem>
           <GridItem>
-            <Radio value="10000">~1,0000</Radio>
+            <Radio value="10000" colorScheme='orange'>~1,0000</Radio>
           </GridItem>
           <GridItem>
-            <Radio value="10001">1,000~</Radio>
+            <Radio value="10001" colorScheme='orange'>1,000~</Radio>
           </GridItem>
         </Grid>
       </RadioGroup>

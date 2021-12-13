@@ -1,12 +1,8 @@
-.mainFontColor {
+.mainFontStyle {
   color: #666;
   font-family: "ヒラギノ丸ゴ Pro W4", "ヒラギノ丸ゴ Pro",
     "Hiragino Maru Gothic Pro", "ヒラギノ角ゴ Pro W3",
     "Hiragino Kaku Gothic Pro", "HG丸ｺﾞｼｯｸM-PRO", "HGMaruGothicMPRO";
-}
-
-.questionTitle {
-  border-bottom: solid 1px #666;
 }
 
 .featureInactive {

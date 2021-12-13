@@ -31,18 +31,18 @@ export const WorryCheckbox = (props) => {
 
   return (
     <FormControl as="fieldset" isRequired mt="5">
-      <FormLabel as="legend" className={styles.questionTitle}>
-        お悩み
+      <FormLabel as="legend" mb='5' borderBottom='solid 1px #ccc'>
+        スキンケアに関してお悩みはありますか？
       </FormLabel>
       {data ? (
-        <Grid templateColumns="repeat(3, 1fr)" gap={6}>
+        <Grid templateColumns="repeat(2, 1fr)" gap={6} w='100vw'>
           {data.map((effect) => (
             <GridItem
-              spacing="24px"
               key={effect["id"]}
               value={worry}
             >
               <Checkbox
+                colorScheme='orange'
                 value={effect["id"]}
                 onChange={onChangeCheckbox}
                 isChecked={worry.includes(String(effect["id"]))}
