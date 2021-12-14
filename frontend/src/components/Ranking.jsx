@@ -13,8 +13,9 @@ export const Ranking = () => {
   const location = useLocation();
 
   const [data, setData] = useState([]);
-  const [paginate, setPaginate] = useState({});
+  const [currentData, setCurrentData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
+  const [lastPage, setLastPage] = useState(null);
   const [error, setError] = useState(null);
 
   const url = useMemo(
@@ -22,15 +23,13 @@ export const Ranking = () => {
     []
   );
 
-  let paramData = useMemo(() => {
+  const paramData = useMemo(() => {
     return {
       genre: location.state.genre,
       effects: location.state.effects,
       price: location.state.price,
-      currentPage: currentPage,
-      perPage: process.env.REACT_APP_ITEM_PER_PAGE
     };
-  }, [location, currentPage]);
+  }, [location]);
   const param = useMemo(() => {
     return {
       method: "POST",
@@ -47,15 +46,20 @@ export const Ranking = () => {
       .then((json) => {
         setError(json.error);
         setData(json.data);
-        setPaginate(json.paginate);
+        setCurrentData(json.data.slice(0, process.env.REACT_APP_ITEM_PER_PAGE));
+        setLastPage(Math.floor(json.data.length / process.env.REACT_APP_ITEM_PER_PAGE))
       })
       .catch((err) => setError(err));
   }, [url, param]);
 
-
   const changePage = (page) => {
-    console.log(page)
-    // setCurrentPage(page);
+    let current = [];
+    for (let key in data) {
+      if (key > (page - 1) * process.env.REACT_APP_ITEM_PER_PAGE && key <= page * process.env.REACT_APP_ITEM_PER_PAGE) current.push(data[key]);
+    }
+    setCurrentData(current);
+
+    setCurrentPage(page);
   };
 
   const goBack = () => {
@@ -99,7 +103,7 @@ export const Ranking = () => {
           <Center my="10">該当なし</Center>
         ) : (
           <>
-            {data.map((item, index) => (
+            {currentData.map((item, index) => (
               <Flex key={index} mt={7} mb={10}>
                 <Box className={styles.flexGrow}>
                   <Image
@@ -113,7 +117,7 @@ export const Ranking = () => {
                   />
                 </Box>
                 <Box ml="5" w="70%">
-                  <Box>{index + 1} 位</Box>
+                  <Box>{(currentPage - 1) * process.env.REACT_APP_ITEM_PER_PAGE + index + 1} 位</Box>
                   <Box>{item.name}</Box>
                   <Flex>
                     <Box fontSize="sm">
@@ -136,8 +140,8 @@ export const Ranking = () => {
               </Flex>
             ))}
             < Center >
-              {paginate.current_page != 1 ? <Link> 前へ</Link> : ''}
-              {paginate.current_page < paginate.last_page ? <Link onClick={() => changePage(paginate.current_page + 1)}> 次へ</Link> : ''}
+              {currentPage != 1 ? <Button onClick={() => changePage(currentPage - 1)}> 前へ</Button> : ''}
+              {currentPage < lastPage ? <Button onClick={() => changePage(currentPage + 1)}> 次へ</Button> : ''}
             </Center>
           </>
         )}

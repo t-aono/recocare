@@ -16,7 +16,7 @@ export const PriceRadio = (props) => {
       </FormLabel>
 
       <RadioGroup value={price} onChange={(e) => onChangeRadio(e)}>
-        <Grid templateColumns="repeat(2, 1fr)" gap={6} w='100vw'>
+        <Grid templateColumns="repeat(2, 1fr)" gap={6} >
           <GridItem>
             <Radio value="1000" colorScheme='orange'>～ 1,000 円</Radio>
           </GridItem>

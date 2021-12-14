@@ -23,7 +23,7 @@ export const CategoryRadio = (props) => {
         どの種類の商品をお探しですか？
       </FormLabel>
       {data ? (
-        <Grid templateColumns="repeat(2, 1fr)" gap={6} w='100vw' >
+        <Grid templateColumns="repeat(2, 1fr)" gap={6} >
           {data.map((genre) => (
             <GridItem>
               <RadioGroup
