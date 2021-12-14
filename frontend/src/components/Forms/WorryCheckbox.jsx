@@ -5,8 +5,6 @@ import { Center } from "@chakra-ui/layout";
 import { Spinner } from "@chakra-ui/spinner";
 import { Grid, GridItem } from "@chakra-ui/react";
 
-import styles from "../../MainStyles.module.css";
-
 export const WorryCheckbox = (props) => {
   const { worry, setWorry } = props;
 
@@ -30,7 +28,7 @@ export const WorryCheckbox = (props) => {
   if (error) return <Center>データのアクセスに失敗しました。</Center>;
 
   return (
-    <FormControl as="fieldset" isRequired mt="5">
+    <FormControl isRequired mt="5">
       <FormLabel as="legend" mb='5' borderBottom='solid 1px #ccc'>
         スキンケアに関してお悩みはありますか？
       </FormLabel>

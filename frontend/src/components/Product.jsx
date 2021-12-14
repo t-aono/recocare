@@ -1,7 +1,7 @@
 import { useHistory, useParams } from "react-router-dom";
 import { Link } from '@chakra-ui/react'
 import useSWR from "swr";
-import { Box, Center, Heading, Flex } from "@chakra-ui/layout";
+import { Box, Center, Flex } from "@chakra-ui/layout";
 import { Button } from "@chakra-ui/button";
 import { SkeletonText } from "@chakra-ui/skeleton";
 import { ArrowBackIcon, ExternalLinkIcon } from "@chakra-ui/icons";
@@ -38,10 +38,10 @@ export const Product = () => {
 
   return (
     <>
-      <Box className={styles.mainFontColor} w="100%">
-        <Heading as="h3" my="3">
+      <Box>
+        <Box as="h3" my="3">
           商品紹介
-        </Heading>
+        </Box>
         <Flex mt={7} mb={10}>
           <Box className={styles.flexGrow}>
             <Image

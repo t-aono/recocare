@@ -1,12 +1,10 @@
 import useSWR from "swr";
 import { FormControl, FormLabel } from "@chakra-ui/react";
-import { GridItem, HStack } from "@chakra-ui/layout";
+import { GridItem } from "@chakra-ui/layout";
 import { Radio, RadioGroup } from "@chakra-ui/radio";
 import { Center } from "@chakra-ui/react";
 import { Spinner } from "@chakra-ui/spinner";
 import { Grid } from "@chakra-ui/react";
-
-import styles from "../../MainStyles.module.css";
 
 export const CategoryRadio = (props) => {
   const { category, setCategory } = props;
@@ -20,7 +18,7 @@ export const CategoryRadio = (props) => {
   if (error) return <Center>データのアクセスに失敗しました。</Center>;
 
   return (
-    <FormControl as="fieldset" isRequired mt="5">
+    <FormControl isRequired mt="5">
       <FormLabel as="legend" mb='5' borderBottom='solid 1px #ccc'>
         どの種類の商品をお探しですか？
       </FormLabel>

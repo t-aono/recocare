@@ -29,12 +29,14 @@ class RankingProducts extends Controller
         $genre_id = $request->input('genre');
         $effects = $request->input('effects');
         $price = $request->input('price');
+        $current_page = $request->input('currentPage');
+        $per_page = $request->input('perPage');
         $effect = new Effect;
 
         if ($price === '10001') {
             $products = Product::where('parent_genre_id', $genre_id)->where('price', '>=', $price)->get();
         } elseif ($price) {
-            $products = Product::where('parent_genre_id', $genre_id)->where('price', '<', $price)->get();
+            $products = Product::where('parent_genre_id', $genre_id)->where('price', '<', $price)->paginate($per_page);
         } else {
             $products = Product::where('parent_genre_id', $genre_id)->get();
         }
@@ -60,6 +62,6 @@ class RankingProducts extends Controller
             return $b['point'] - $a['point'];
         });
 
-        return response()->json(['data' => $result]);
+        return response()->json(['data' => $result, 'paginate' => $products]);
     }
 }
