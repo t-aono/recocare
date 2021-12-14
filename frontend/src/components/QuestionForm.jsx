@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Center, Heading, Box, VStack } from "@chakra-ui/layout";
+import { Center, Box, VStack } from "@chakra-ui/layout";
 import { Button } from "@chakra-ui/button";
 import { useToast } from "@chakra-ui/toast";
 import { useHistory, useLocation } from "react-router-dom";
@@ -46,14 +46,14 @@ export const QuestionForm = () => {
 
   return (
     <>
-      <Box className={styles.mainFontColor} minW="570px">
-        <Heading as="h1" my="3" fontSize="1.2em">
-          あなたのご要望を教えてください
-        </Heading>
-        <Box >
+      <Box>
+        <Center as="h1" my="3" fontSize="1.5em">
+          アンケートフォーム
+        </Center>
+        <Box my='3em'>
           <Image src={ChooseSvg} my={10} w='100vw' objectFit='contain' />
         </Box>
-        <VStack spacing={10}>
+        <VStack spacing={12}>
           <CategoryRadio category={category} setCategory={setCategory} />
           <WorryCheckbox worry={worry} setWorry={setWorry} />
           <PriceRadio price={price} setPrice={setPrice} />

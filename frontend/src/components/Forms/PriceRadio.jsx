@@ -10,7 +10,7 @@ export const PriceRadio = (props) => {
   const onChangeRadio = (e) => setPrice(e);
 
   return (
-    <FormControl as="fieldset" mt="5">
+    <FormControl mt="5">
       <FormLabel as="legend" mb='5' borderBottom='solid 1px #ccc'>
         ご予算はどれくらいですか？
       </FormLabel>
@@ -18,25 +18,25 @@ export const PriceRadio = (props) => {
       <RadioGroup value={price} onChange={(e) => onChangeRadio(e)}>
         <Grid templateColumns="repeat(2, 1fr)" gap={6} w='100vw'>
           <GridItem>
-            <Radio value="1000" colorScheme='orange'>~1,000</Radio>
+            <Radio value="1000" colorScheme='orange'>～ 1,000 円</Radio>
           </GridItem>
           <GridItem>
-            <Radio value="2000" colorScheme='orange'>~2,000</Radio>
+            <Radio value="2000" colorScheme='orange'>～ 2,000 円</Radio>
           </GridItem>
           <GridItem>
-            <Radio value="3000" colorScheme='orange'>~3,000</Radio>
+            <Radio value="3000" colorScheme='orange'>～ 3,000 円</Radio>
           </GridItem>
           <GridItem>
-            <Radio value="5000" colorScheme='orange'>~5,000</Radio>
+            <Radio value="5000" colorScheme='orange'>～ 5,000 円</Radio>
           </GridItem>
           <GridItem>
-            <Radio value="7000" colorScheme='orange'>~7,000</Radio>
+            <Radio value="7000" colorScheme='orange'>～ 7,000 円</Radio>
           </GridItem>
           <GridItem>
-            <Radio value="10000" colorScheme='orange'>~1,0000</Radio>
+            <Radio value="10000" colorScheme='orange'>～ 10,000 円</Radio>
           </GridItem>
           <GridItem>
-            <Radio value="10001" colorScheme='orange'>1,000~</Radio>
+            <Radio value="10001" colorScheme='orange'>10,000 円 ～</Radio>
           </GridItem>
         </Grid>
       </RadioGroup>

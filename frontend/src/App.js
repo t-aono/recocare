@@ -8,14 +8,16 @@ import { Top } from './components/Top';
 import { Product } from './components/Product';
 import { QuestionForm } from './components/QuestionForm';
 import { Ranking } from './components/Ranking';
+import ScrollToTop from './components/ScrollToTop';
 import NotFound from './svgs/undraw_page_not_found.svg';
 
 function App() {
   return (
     <ChakraProvider>
       <Header />
-      <Container className={styles.mainFontStyle}>
+      <Container className={styles.mainFontStyle} w='100%'>
         <BrowserRouter>
+          <ScrollToTop/>
           <Switch>
             <Route exact path="/">
               <Top />
