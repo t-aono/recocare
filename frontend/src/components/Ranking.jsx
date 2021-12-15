@@ -4,10 +4,11 @@ import { Box, Center, Flex } from "@chakra-ui/layout";
 import { Button } from "@chakra-ui/button";
 import { SkeletonText } from "@chakra-ui/skeleton";
 import { Image } from "@chakra-ui/image";
-import { ArrowBackIcon } from "@chakra-ui/icons";
+import { ArrowBackIcon, InfoOutlineIcon } from "@chakra-ui/icons";
 
 import styles from "../MainStyles.module.css";
 import { PaginateBtn } from "./PaginateBtn";
+import Logo from '..//images/logo.png';
 
 export const Ranking = () => {
   const history = useHistory();
@@ -121,7 +122,7 @@ export const Ranking = () => {
                 <Box className={styles.flexGrow}>
                   <Image
                     src={item.small_image_url}
-                    fallbackSrc='https://via.placeholder.com/150'
+                    fallbackSrc={Logo}
                     alt={item.name}
                     objectFit="contain"
                     w="100%"
@@ -152,15 +153,17 @@ export const Ranking = () => {
             <Box mt='10'>
               <PaginateBtn currentPage={currentPage} lastPage={lastPage} changePage={changePage} />
             </Box>
+            <Center mt='10'>
+              <Box lineHeight='1.8em'><InfoOutlineIcon w='5' h='5' mr='1' />points は独自の計算式によって算出しています。大きいほどご要望にマッチしています。</Box>
+            </Center>
           </>
         )}
         <Center my="5em">
           <Button
-            colorScheme='gray'
-            variant='outline'
+            variant='link'
             onClick={goBack}
           >
-            <ArrowBackIcon w="5" h="5" verticalAlign='sub' />
+            <ArrowBackIcon w="5" h="5" verticalAlign='sub' fontSize='sm' />
             アンケートフォームへ戻る
           </Button>
         </Center>

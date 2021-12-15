@@ -6,7 +6,7 @@ import { useMemo } from "react";
 export const PriceRadio = (props) => {
   const { price, setPrice } = props;
 
-  const priceList = useMemo(() => ['1000', '2000', '3000', '5000', '7000', '10000', '20000']);
+  const priceList = useMemo(() => ['1000', '2000', '3000', '5000', '7000', '10000', '20000'], []);
 
   const onChangeRadio = (e) => setPrice(e);
 
