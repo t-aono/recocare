@@ -61,3 +61,6 @@ etc
 
 -   商品一覧から Rakuten API で取得  
     http://localhost/product
+    
+### DB から Seeder を作成
+- `php artisan iseed <table-name>`
