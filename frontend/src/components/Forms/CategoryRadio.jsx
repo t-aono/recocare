@@ -23,9 +23,9 @@ export const CategoryRadio = (props) => {
         どの種類の商品をお探しですか？
       </FormLabel>
       {data ? (
-        <Grid templateColumns="repeat(2, 1fr)" gap={6} >
+        <Grid templateColumns="repeat(2, 1fr)" columnGap={1} rowGap={3} >
           {data.map((genre) => (
-            <GridItem>
+            <GridItem key={genre.id}>
               <RadioGroup
                 value={category}
                 onChange={(e) => onChangeRadio(e)}
@@ -40,7 +40,8 @@ export const CategoryRadio = (props) => {
         <Center align="center">
           <Spinner />
         </Center>
-      )}
-    </FormControl>
+      )
+      }
+    </FormControl >
   );
 };

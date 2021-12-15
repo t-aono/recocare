@@ -1,11 +1,12 @@
 import { FormControl, FormLabel } from "@chakra-ui/react";
 import { Radio, RadioGroup } from "@chakra-ui/radio";
 import { Grid, GridItem } from "@chakra-ui/react";
-
-import styles from "../../MainStyles.module.css";
+import { useMemo } from "react";
 
 export const PriceRadio = (props) => {
   const { price, setPrice } = props;
+
+  const priceList = useMemo(() => [1000, 2000, 3000, 5000, 7000, 10000, 20000]);
 
   const onChangeRadio = (e) => setPrice(e);
 
@@ -15,12 +16,20 @@ export const PriceRadio = (props) => {
         ご予算はどれくらいですか？
       </FormLabel>
 
-      <RadioGroup value={price} onChange={(e) => onChangeRadio(e)}>
-        <Grid templateColumns="repeat(2, 1fr)" gap={6} >
-          <GridItem>
-            <Radio value="1000" colorScheme='orange'>～ 1,000 円</Radio>
+      {/* <RadioGroup value={price} onChange={(e) => onChangeRadio(e)}> */}
+      <Grid templateColumns="repeat(2, 1fr)" columnGap={1} rowGap={3} >
+        {priceList.map((item) => (
+          <GridItem key={item}>
+            <RadioGroup value={price} onChange={(e) => onChangeRadio(e)}>
+              <Radio value={item} colorScheme='orange'
+              >～{item.toLocaleString("ja-JP", {
+                style: "currency",
+                currency: "JPY",
+              })}</Radio>
+            </RadioGroup>
           </GridItem>
-          <GridItem>
+        ))}
+        {/* <GridItem>
             <Radio value="2000" colorScheme='orange'>～ 2,000 円</Radio>
           </GridItem>
           <GridItem>
@@ -37,9 +46,9 @@ export const PriceRadio = (props) => {
           </GridItem>
           <GridItem>
             <Radio value="10001" colorScheme='orange'>10,000 円 ～</Radio>
-          </GridItem>
-        </Grid>
-      </RadioGroup>
+          </GridItem> */}
+      </Grid>
+      {/* </RadioGroup> */}
     </FormControl>
   );
 };

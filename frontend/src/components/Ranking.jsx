@@ -4,7 +4,8 @@ import { Box, Center, Flex, Spacer } from "@chakra-ui/layout";
 import { Button } from "@chakra-ui/button";
 import { SkeletonText } from "@chakra-ui/skeleton";
 import { Image } from "@chakra-ui/image";
-import { ArrowBackIcon } from "@chakra-ui/icons";
+import { ArrowBackIcon, ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons";
+import { Link as ChakraLink } from "@chakra-ui/layout";
 
 import styles from "../MainStyles.module.css";
 
@@ -60,6 +61,7 @@ export const Ranking = () => {
     setCurrentData(current);
 
     setCurrentPage(page);
+    window.scrollTo(0, 0);
   };
 
   const goBack = () => {
@@ -95,7 +97,7 @@ export const Ranking = () => {
   return (
     <>
       <Box>
-        <Center as="h1" my="3" fontSize="1.5em">
+        <Center as="h1" fontSize="xl">
           おすすめランキング
         </Center>
         {error ? error : ""}
@@ -103,8 +105,13 @@ export const Ranking = () => {
           <Center my="10">該当なし</Center>
         ) : (
           <>
+            <Box mt='8' borderBottom='solid 1px #ccc' w='6em' ml="auto" textAlign='center' fontSize='sm'>
+              {(currentPage - 1) * process.env.REACT_APP_ITEM_PER_PAGE + 1}
+              〜
+              {currentPage * process.env.REACT_APP_ITEM_PER_PAGE} 位
+            </Box>
             {currentData.map((item, index) => (
-              <Flex key={index} mt={7} mb={10}>
+              <Flex key={index} mt={3} mb={15}>
                 <Box className={styles.flexGrow}>
                   <Image
                     src={item.image_url}
@@ -117,7 +124,7 @@ export const Ranking = () => {
                   />
                 </Box>
                 <Box ml="5" w="70%">
-                  <Box>{(currentPage - 1) * process.env.REACT_APP_ITEM_PER_PAGE + index + 1} 位</Box>
+                  <Box fontWeight='bold'>{(currentPage - 1) * process.env.REACT_APP_ITEM_PER_PAGE + index + 1} 位</Box>
                   <Box>{item.name}</Box>
                   <Flex>
                     <Box fontSize="sm">
@@ -139,22 +146,20 @@ export const Ranking = () => {
                 </Box>
               </Flex>
             ))}
-            < Center >
-              {currentPage != 1 ? <Button onClick={() => changePage(currentPage - 1)}> 前へ</Button> : ''}
-              {currentPage < lastPage ? <Button onClick={() => changePage(currentPage + 1)}> 次へ</Button> : ''}
+            < Center gridColumnGap="10" mt="10">
+              {currentPage !== 1 ? <ChakraLink onClick={() => changePage(currentPage - 1)}><ChevronLeftIcon w='5' h='5' verticalAlign='sub' />前へ</ChakraLink> : ''}
+              {currentPage < lastPage ? <ChakraLink onClick={() => changePage(currentPage + 1)}>次へ<ChevronRightIcon w='5' h='5' verticalAlign='sub' /></ChakraLink> : ''}
             </Center>
           </>
         )}
         <Center mt="10">
-          <Button
-            size="lg"
-            variant="link"
+          <ChakraLink
             mb="10"
             onClick={goBack}
           >
-            <ArrowBackIcon w="7" h="7" />
-            戻る
-          </Button>
+            <ArrowBackIcon w="5" h="5" verticalAlign='sub' />
+            アンケートフォームへ戻る
+          </ChakraLink>
         </Center>
       </Box>
     </>

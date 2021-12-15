@@ -33,7 +33,7 @@ export const WorryCheckbox = (props) => {
         スキンケアに関してお悩みはありますか？
       </FormLabel>
       {data ? (
-        <Grid templateColumns="repeat(2, 1fr)" gap={6} >
+        <Grid templateColumns="repeat(2, 1fr)" columnGap={1} rowGap={3} >
           {data.map((effect) => (
             <GridItem
               key={effect["id"]}
