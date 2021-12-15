@@ -22,7 +22,8 @@ class CreateProductsTable extends Migration
             $table->string('genre_id');
             $table->string('parent_genre_id');
             $table->string('rakuten_url');
-            $table->string('image_url');
+            $table->string('small_image_url');
+            $table->string('medium_image_url');
             $table->timestamps();
 
             $table->foreign('parent_genre_id')->references('genre_id')->on('genres');

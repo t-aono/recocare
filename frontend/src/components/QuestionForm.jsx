@@ -1,13 +1,16 @@
 import { useEffect, useState } from "react";
-import { Center, Heading, Box } from "@chakra-ui/layout";
+import { Center, Box, VStack } from "@chakra-ui/layout";
 import { Button } from "@chakra-ui/button";
 import { useToast } from "@chakra-ui/toast";
 import { useHistory, useLocation } from "react-router-dom";
+import { Image } from "@chakra-ui/image";
 
 import styles from "../MainStyles.module.css";
 import { CategoryRadio } from "./Forms/CategoryRadio";
 import { PriceRadio } from "./Forms/PriceRadio";
 import { WorryCheckbox } from "./Forms/WorryCheckbox";
+import ChooseSvg from '../svgs/undraw_choose.svg';
+import CosmeImage from '../images/cosme.png'
 
 export const QuestionForm = () => {
   const history = useHistory();
@@ -43,24 +46,34 @@ export const QuestionForm = () => {
 
   return (
     <>
-      <Box className={styles.mainFontColor} minW="570px">
-        <Heading as="h3" my="3">
-          アンケート
-        </Heading>
-        <CategoryRadio category={category} setCategory={setCategory} />
-        <WorryCheckbox worry={worry} setWorry={setWorry} />
-        <PriceRadio price={price} setPrice={setPrice} />
+      <Box>
+        <Center as="h1" my="3" fontSize="1.5em">
+          アンケートフォーム
+        </Center>
+        <Box my='3em'>
+          <Image src={ChooseSvg} my={10} w='100vw' objectFit='contain' />
+        </Box>
+        <VStack spacing={12}>
+          <CategoryRadio category={category} setCategory={setCategory} />
+          <WorryCheckbox worry={worry} setWorry={setWorry} />
+          <PriceRadio price={price} setPrice={setPrice} />
+        </VStack>
       </Box>
-      <Center mt="10">
+      <Center mt="5em">
         <Button
-          colorScheme="teal"
-          variant="outline"
+          className={styles.primaryBtn}
+          colorScheme="red500"
+          height='65px'
+          width='200px'
           size="lg"
           onClick={checkAnswer}
         >
           回答する
         </Button>
       </Center>
+      <Box my="20" position="relative" left="50%" transform="translateX(-50%)" w="100vw" >
+        <Image src={CosmeImage} h="80vw" maxH="800px" objectFit="cover" m="0 auto" />
+      </Box>
     </>
   );
 };

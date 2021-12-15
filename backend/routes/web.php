@@ -19,10 +19,6 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::get('/manage', function () {
-    return view('manage.index');
-});
-
 Route::group(['middleware' => 'auth'], function () {
 
     Route::name('ingredient.')->group(function () {

@@ -1,12 +1,10 @@
 import useSWR from "swr";
 import { FormControl, FormLabel } from "@chakra-ui/react";
-import { HStack } from "@chakra-ui/layout";
+import { GridItem } from "@chakra-ui/layout";
 import { Radio, RadioGroup } from "@chakra-ui/radio";
 import { Center } from "@chakra-ui/react";
 import { Spinner } from "@chakra-ui/spinner";
 import { Grid } from "@chakra-ui/react";
-
-import styles from "../../MainStyles.module.css";
 
 export const CategoryRadio = (props) => {
   const { category, setCategory } = props;
@@ -20,29 +18,30 @@ export const CategoryRadio = (props) => {
   if (error) return <Center>データのアクセスに失敗しました。</Center>;
 
   return (
-    <FormControl as="fieldset" isRequired mt="5">
-      <FormLabel as="legend" className={styles.questionTitle}>
-        カテゴリ
+    <FormControl isRequired mt="5">
+      <FormLabel as="legend" mb='5' borderBottom='solid 1px #ccc'>
+        どの種類の商品をお探しですか？
       </FormLabel>
       {data ? (
-        <Grid templateColumns="repeat(3, 1fr)" gap={6}>
-          {data.map((genre) => (
-            <RadioGroup
-              value={category}
-              onChange={(e) => onChangeRadio(e)}
-              key={genre["id"]}
-            >
-              <HStack spacing="24px">
-                <Radio value={genre["genre_id"]}>{genre["name"]}</Radio>
-              </HStack>
-            </RadioGroup>
-          ))}
-        </Grid>
+        <RadioGroup
+          name='category'
+          value={category}
+          onChange={(e) => onChangeRadio(e)}
+        >
+          <Grid templateColumns="repeat(2, 1fr)" columnGap={1} rowGap={3} >
+            {data.map((genre) => (
+              <GridItem key={genre.id}>
+                <Radio value={genre["genre_id"]} colorScheme='orange'>{genre["name"]}</Radio>
+              </GridItem>
+            ))}
+          </Grid>
+        </RadioGroup>
       ) : (
         <Center align="center">
           <Spinner />
         </Center>
-      )}
-    </FormControl>
+      )
+      }
+    </FormControl >
   );
 };

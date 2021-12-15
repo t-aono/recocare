@@ -1,9 +1,8 @@
-.mainFontColor {
+.mainFontStyle {
   color: #666;
-}
-
-.questionTitle {
-  border-bottom: solid 1px #666;
+  font-family: "ヒラギノ丸ゴ Pro W4", "ヒラギノ丸ゴ Pro",
+    "Hiragino Maru Gothic Pro", "ヒラギノ角ゴ Pro W3",
+    "Hiragino Kaku Gothic Pro", "HG丸ｺﾞｼｯｸM-PRO", "HGMaruGothicMPRO";
 }
 
 .featureInactive {
@@ -16,4 +15,19 @@
 
 .flexGrow {
   flex: 1;
+}
+
+.topMessage {
+  font-size: 1.8em;
+  line-height: 2em;
+  padding: 0.1em;
+  font-style: italic;
+  text-decoration: underline #cc4c1f;
+  -webkit-text-decoration-skip: none;
+  -webkit-text-decoration: underline #cc4c1f;
+}
+
+.primaryBtn {
+  background-color: #cc4c1f;
+  color: #fff;
 }
