@@ -23,19 +23,19 @@ export const CategoryRadio = (props) => {
         どの種類の商品をお探しですか？
       </FormLabel>
       {data ? (
-        <Grid templateColumns="repeat(2, 1fr)" columnGap={1} rowGap={3} >
-          {data.map((genre) => (
-            <GridItem key={genre.id}>
-              <RadioGroup
-                value={category}
-                onChange={(e) => onChangeRadio(e)}
-                key={genre["id"]}
-              >
+        <RadioGroup
+          name='category'
+          value={category}
+          onChange={(e) => onChangeRadio(e)}
+        >
+          <Grid templateColumns="repeat(2, 1fr)" columnGap={1} rowGap={3} >
+            {data.map((genre) => (
+              <GridItem key={genre.id}>
                 <Radio value={genre["genre_id"]} colorScheme='orange'>{genre["name"]}</Radio>
-              </RadioGroup>
-            </GridItem>
-          ))}
-        </Grid>
+              </GridItem>
+            ))}
+          </Grid>
+        </RadioGroup>
       ) : (
         <Center align="center">
           <Spinner />

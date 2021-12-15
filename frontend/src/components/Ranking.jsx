@@ -1,13 +1,13 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { useHistory, useLocation, Link } from "react-router-dom";
-import { Box, Center, Flex, Spacer } from "@chakra-ui/layout";
+import { Box, Center, Flex } from "@chakra-ui/layout";
 import { Button } from "@chakra-ui/button";
 import { SkeletonText } from "@chakra-ui/skeleton";
 import { Image } from "@chakra-ui/image";
-import { ArrowBackIcon, ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons";
-import { Link as ChakraLink } from "@chakra-ui/layout";
+import { ArrowBackIcon } from "@chakra-ui/icons";
 
 import styles from "../MainStyles.module.css";
+import { PaginateBtn } from "./PaginateBtn";
 
 export const Ranking = () => {
   const history = useHistory();
@@ -105,7 +105,13 @@ export const Ranking = () => {
           <Center my="10">該当なし</Center>
         ) : (
           <>
-            <Box mt='8' borderBottom='solid 1px #ccc' w='6em' ml="auto" textAlign='center' fontSize='sm'>
+            <Box fontSize={'sm'} mt='5'>
+              {data.length}件ヒットしました!
+            </Box>
+            <Box mt='3'>
+              <PaginateBtn currentPage={currentPage} lastPage={lastPage} changePage={changePage} />
+            </Box>
+            <Box borderBottom='solid 1px #ccc' w='6em' textAlign='center' fontSize='sm'>
               {(currentPage - 1) * process.env.REACT_APP_ITEM_PER_PAGE + 1}
               〜
               {currentPage * process.env.REACT_APP_ITEM_PER_PAGE} 位
@@ -114,7 +120,7 @@ export const Ranking = () => {
               <Flex key={index} mt={3} mb={15}>
                 <Box className={styles.flexGrow}>
                   <Image
-                    src={item.image_url}
+                    src={item.small_image_url}
                     fallbackSrc='https://via.placeholder.com/150'
                     alt={item.name}
                     objectFit="contain"
@@ -126,19 +132,16 @@ export const Ranking = () => {
                 <Box ml="5" w="70%">
                   <Box fontWeight='bold'>{(currentPage - 1) * process.env.REACT_APP_ITEM_PER_PAGE + index + 1} 位</Box>
                   <Box>{item.name}</Box>
-                  <Flex>
-                    <Box fontSize="sm">
-                      {item.price.toLocaleString("ja-JP", {
-                        style: "currency",
-                        currency: "JPY",
-                      })}
-                    </Box>
-                    <Spacer />
-                    <Box fontSize="sm">{item.point} points</Box>
-                  </Flex>
+                  <Box fontSize="sm" my='1'>
+                    {item.price.toLocaleString("ja-JP", {
+                      style: "currency",
+                      currency: "JPY",
+                    })}
+                  </Box>
+                  <Box fontSize="sm" my='1'>{item.point} points</Box>
                   <Center>
                     <Link to={"/product/" + item.id}>
-                      <Button colorScheme="teal" size="sm" variant="outline">
+                      <Button colorScheme="red" size="sm" variant="outline">
                         詳細を見る
                       </Button>
                     </Link>
@@ -146,20 +149,20 @@ export const Ranking = () => {
                 </Box>
               </Flex>
             ))}
-            < Center gridColumnGap="10" mt="10">
-              {currentPage !== 1 ? <ChakraLink onClick={() => changePage(currentPage - 1)}><ChevronLeftIcon w='5' h='5' verticalAlign='sub' />前へ</ChakraLink> : ''}
-              {currentPage < lastPage ? <ChakraLink onClick={() => changePage(currentPage + 1)}>次へ<ChevronRightIcon w='5' h='5' verticalAlign='sub' /></ChakraLink> : ''}
-            </Center>
+            <Box mt='10'>
+              <PaginateBtn currentPage={currentPage} lastPage={lastPage} changePage={changePage} />
+            </Box>
           </>
         )}
-        <Center mt="10">
-          <ChakraLink
-            mb="10"
+        <Center my="5em">
+          <Button
+            colorScheme='gray'
+            variant='outline'
             onClick={goBack}
           >
             <ArrowBackIcon w="5" h="5" verticalAlign='sub' />
             アンケートフォームへ戻る
-          </ChakraLink>
+          </Button>
         </Center>
       </Box>
     </>
