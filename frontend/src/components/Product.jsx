@@ -1,7 +1,7 @@
 import { useHistory, useParams } from "react-router-dom";
 import { Link } from '@chakra-ui/react'
 import useSWR from "swr";
-import { Box, Center, Flex } from "@chakra-ui/layout";
+import { Box, Center } from "@chakra-ui/layout";
 import { Button } from "@chakra-ui/button";
 import { SkeletonText } from "@chakra-ui/skeleton";
 import { ArrowBackIcon, ExternalLinkIcon } from "@chakra-ui/icons";
@@ -78,7 +78,6 @@ export const Product = () => {
       </Box>
       <Center mt="10">
         <Button
-          colorScheme="gray"
           size="lg"
           mb="10"
           variant="link"
