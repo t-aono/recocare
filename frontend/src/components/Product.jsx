@@ -31,68 +31,61 @@ export const Product = () => {
         mb="10"
         pt="5"
         pb="5"
-        startColor="teal.300"
-        endColor="teal.100"
+        startColor="red.300"
+        endColor="red.100"
       ></SkeletonText>
     );
 
   return (
     <>
       <Box>
-        <Box as="h3" my="3">
-          商品紹介
+        <Center as="h1" fontSize="xl">
+          商品詳細
+        </Center>
+        <Box mt='5' fontWeight="bold">商品名</Box>
+        <Box>{data.name}</Box>
+        <Box p='10' className={styles.flexGrow}>
+          <Image
+            src={data.medium_image_url}
+            alt={data.name}
+            objectFit="contain"
+            w="100%"
+          />
         </Box>
-        <Flex mt={7} mb={10}>
-          <Box className={styles.flexGrow}>
-            <Image
-              src={data.image_url}
-              alt={data.name}
-              objectFit="contain"
-              w="100%"
-              borderRadius="lg"
-            />
+        <Box>
+          <Box fontWeight="bold">価格</Box>
+          <Box>
+            {data.price.toLocaleString("ja-JP", {
+              style: "currency",
+              currency: "JPY",
+            })}
           </Box>
-          <Box ml="5" w="70%">
-            <Box fontWeight="bold">商品名</Box>
-            <Box>{data.name}</Box>
-            <Flex justifyContent="space-between" pt="5">
-              <Box>
-                <Box fontWeight="bold">価格</Box>
-                <Box fontSize="sm">
-                  {data.price.toLocaleString("ja-JP", {
-                    style: "currency",
-                    currency: "JPY",
-                  })}
-                </Box>
-              </Box>
-              <Box>
-                <Box fontWeight="bold">登録日</Box>
-                <Box>{createdDate}</Box>
-              </Box>
-              <Box>
-                <Link href={data.rakuten_url} isExternal={true} >
-                  <Button colorScheme="red" variant="outline">
-                    楽天で見る
-                    <ExternalLinkIcon mx='2px' />
-                  </Button>
-                </Link>
-              </Box>
-            </Flex>
-          </Box>
-        </Flex>
+        </Box>
+        <Box mt='3'>
+          <Box fontWeight="bold">登録日</Box>
+          <Box>{createdDate}</Box>
+        </Box>
+        <Box my='5' textAlign={'center'}>
+          <Link href={data.rakuten_url} isExternal={true} >
+            <Button colorScheme="red" variant="outline">
+              楽天で見る
+              <ExternalLinkIcon mx='2px' />
+            </Button>
+          </Link>
+        </Box>
         <Box fontWeight="bold">商品説明</Box>
         <Box>{data.caption}</Box>
       </Box>
       <Center mt="10">
         <Button
-          colorScheme="teal"
+          colorScheme="gray"
           size="lg"
           mb="10"
           variant="link"
           onClick={() => history.goBack()}
         >
           <ArrowBackIcon w="7" h="7" />
-          戻る
+          ランキングに戻る
         </Button>
       </Center>
     </>
