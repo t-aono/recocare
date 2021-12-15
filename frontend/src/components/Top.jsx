@@ -19,7 +19,7 @@ export const Top = () => {
   return (
     <>
       <Center className={styles.topMessage}>
-        <Box as="h1" fontSize="1.2em">
+        <Box as="h1" fontSize="1.1em">
           お気に入りスキンケアを見つけよう
         </Box>
       </Center>

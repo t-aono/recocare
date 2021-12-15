@@ -59,7 +59,7 @@ export const QuestionForm = () => {
           <PriceRadio price={price} setPrice={setPrice} />
         </VStack>
       </Box>
-      <Center mt="10">
+      <Center mt="5em">
         <Button
           className={styles.primaryBtn}
           colorScheme="red500"
