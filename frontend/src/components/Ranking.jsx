@@ -77,6 +77,7 @@ export const Ranking = () => {
   };
 
   if (error) return <Center>データのアクセスに失敗しました。</Center>;
+
   if (data.length === 0 && !error)
     return (
       <Box>
@@ -101,6 +102,14 @@ export const Ranking = () => {
         <Center as="h1" fontSize="xl">
           おすすめランキング
         </Center>
+        <Box>
+          <Box>カテゴリ：{location.state.genreName}</Box>
+          <Box>悩み：{location.state.effectNames.join('/')}</Box>
+          <Box>ご予算：〜{Number(location.state.price).toLocaleString("ja-JP", {
+            style: "currency",
+            currency: "JPY",
+          })}</Box>
+        </Box>
         {error ? error : ""}
         {data.length === 0 ? (
           <Center my="10">該当なし</Center>
@@ -133,13 +142,16 @@ export const Ranking = () => {
                 <Box ml="5" w="70%">
                   <Box fontWeight='bold'>{(currentPage - 1) * process.env.REACT_APP_ITEM_PER_PAGE + index + 1} 位</Box>
                   <Box>{item.name}</Box>
+                  {item.recomend.map(reco => (
+                    <Box key={reco.ingredient}>{reco.effective} におすすめな成分 {reco.ingredient}</Box>
+                  ))}
                   <Box fontSize="sm" my='1'>
                     {item.price.toLocaleString("ja-JP", {
                       style: "currency",
                       currency: "JPY",
                     })}
                   </Box>
-                  <Box fontSize="sm" my='1'>{item.point} points</Box>
+                  {/* <Box fontSize="sm" my='1'>{item.point} points</Box> */}
                   <Center>
                     <Link to={"/product/" + item.id}>
                       <Button colorScheme="red" size="sm" variant="outline">
