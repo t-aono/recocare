@@ -7,7 +7,7 @@ import { Spinner } from "@chakra-ui/spinner";
 import { Grid } from "@chakra-ui/react";
 
 export const CategoryRadio = (props) => {
-  const { category, setCategory } = props;
+  const { category, setCategory, setCategories } = props;
 
   const onChangeRadio = (e) => setCategory(e);
 
@@ -15,6 +15,7 @@ export const CategoryRadio = (props) => {
   const fetcher = (arg) => fetch(arg).then((res) => res.json());
   const { data, error } = useSWR(url, fetcher);
 
+  if (data) setCategories(data);
   if (error) return <Center>データのアクセスに失敗しました。</Center>;
 
   return (

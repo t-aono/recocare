@@ -18,3 +18,4 @@ Route::post('/ranking', \App\Http\Controllers\Api\RankingProducts::class);
 Route::get('/genre', \App\Http\Controllers\Api\GenreController::class);
 Route::get('/effect', \App\Http\Controllers\Api\EffectController::class);
 Route::get('/product/{id}', \App\Http\Controllers\Api\ProductController::class);
+Route::get('/count', \App\Http\Controllers\Api\CountController::class);

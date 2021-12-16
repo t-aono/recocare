@@ -6,7 +6,7 @@ import { Spinner } from "@chakra-ui/spinner";
 import { Grid, GridItem } from "@chakra-ui/react";
 
 export const WorryCheckbox = (props) => {
-  const { worry, setWorry } = props;
+  const { worry, setWorry, setWorries } = props;
 
   const onChangeCheckbox = (e) => {
     const index = worry.indexOf(e.target.value);
@@ -25,6 +25,7 @@ export const WorryCheckbox = (props) => {
   const fetcher = (arg) => fetch(arg).then((res) => res.json());
   const { data, error } = useSWR(url, fetcher);
 
+  if (data) setWorries(data);
   if (error) return <Center>データのアクセスに失敗しました。</Center>;
 
   return (
