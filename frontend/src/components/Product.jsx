@@ -1,6 +1,6 @@
 import { useHistory, useParams } from "react-router-dom";
-import { Link } from '@chakra-ui/react'
 import useSWR from "swr";
+import { Link } from '@chakra-ui/react'
 import { Box, Center } from "@chakra-ui/layout";
 import { Button } from "@chakra-ui/button";
 import { SkeletonText } from "@chakra-ui/skeleton";
@@ -77,7 +77,7 @@ export const Product = () => {
         <Box>{data.caption}</Box>
       </Box>
       <Center mt="10">
-        <Button
+        <Link
           size="lg"
           mb="10"
           variant="link"
@@ -85,7 +85,7 @@ export const Product = () => {
         >
           <ArrowBackIcon w="7" h="7" />
           ランキングに戻る
-        </Button>
+        </Link>
       </Center>
     </>
   );
