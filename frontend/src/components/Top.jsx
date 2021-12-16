@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import useSWR from "swr";
 import { Box } from "@chakra-ui/layout";
 import { useLocation, Link } from "react-router-dom";
 import { Image } from "@chakra-ui/image";
@@ -8,13 +9,16 @@ import { Button } from "@chakra-ui/button";
 import styles from "../MainStyles.module.css";
 import CosmeImage from '../images/cosme.png'
 import ReadingSvg from '../svgs/undraw_reading.svg';
+import CrackerSvg from '../svgs/cracker.svg';
 
 export const Top = () => {
   const location = useLocation();
 
-  useEffect(() => {
+  const url = `${process.env.REACT_APP_BACKEND_HOST}api/count`;
+  const fetcher = (arg) => fetch(arg).then((res) => res.json());
+  const { data, error } = useSWR(url, fetcher);
 
-  }, [location]);
+  if (error) return <Center>データのアクセスに失敗しました。</Center>;
 
   return (
     <>
@@ -26,7 +30,17 @@ export const Top = () => {
       <Box my="20" position="relative" left="50%" transform="translateX(-50%)" w="100vw" >
         <Image src={CosmeImage} h="80vw" maxH="800px" objectFit="cover" m="0 auto" />
       </Box>
-      <Box lineHeight="2.5em">
+      {data ? (
+        <Center>
+          <Image src={CrackerSvg} w='14' />
+          <Box fontSize="xl">登録商品数{data.toLocaleString()}点</Box>
+          <Image src={CrackerSvg} w='14' />
+        </Center>
+      ) : ''}
+      <Center>
+        <Box>商品随時追加中！</Box>
+      </Center>
+      <Box lineHeight="2.5em" mt='6em'>
         どれが自分に自分にあっているか分からない。<br />
         商品があり過ぎて探すのが疲れる。<br />
         悩みを解消できる商品を効率的に見つけたい。<br />

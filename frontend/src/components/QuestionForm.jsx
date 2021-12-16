@@ -17,7 +17,9 @@ export const QuestionForm = () => {
   const location = useLocation();
   const toast = useToast();
   const [category, setCategory] = useState("");
+  const [categories, setCategories] = useState("");
   const [worry, setWorry] = useState([]);
+  const [worries, setWorries] = useState();
   const [price, setPrice] = useState("");
 
   useEffect(() => {
@@ -31,15 +33,22 @@ export const QuestionForm = () => {
   const checkAnswer = () => {
     if (!category || !worry.length) {
       toast({
+        status: 'warning',
+        variant: 'top-accent',
         title: "必須項目が未選択です。",
-        status: "warning",
         duration: 3000,
         isClosable: true,
       });
     } else {
       history.push({
         pathname: "/ranking",
-        state: { genre: category, price: price, effects: worry },
+        state: {
+          genre: category,
+          genreName: categories.find(cate => cate.genre_id === category).name,
+          effects: worry,
+          effectNames: worries.map(wo => worry.includes(String(wo.id)) && wo.name).filter(wo => wo),
+          price: price,
+        },
       });
     }
   };
@@ -54,8 +63,8 @@ export const QuestionForm = () => {
           <Image src={ChooseSvg} my={10} w='100vw' objectFit='contain' />
         </Box>
         <VStack spacing={12}>
-          <CategoryRadio category={category} setCategory={setCategory} />
-          <WorryCheckbox worry={worry} setWorry={setWorry} />
+          <CategoryRadio category={category} setCategory={setCategory} categories={categories} setCategories={setCategories} />
+          <WorryCheckbox worry={worry} setWorry={setWorry} setWorries={setWorries} />
           <PriceRadio price={price} setPrice={setPrice} />
         </VStack>
       </Box>

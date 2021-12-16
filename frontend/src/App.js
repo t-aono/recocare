@@ -36,7 +36,7 @@ function App() {
               <Center mt="20">
                 <Image src={NotFound} />
               </Center>
-              <Center mt="20" color="red.600">
+              <Center mt="20">
                 <Link to="/">トップへ</Link>
               </Center>
             </Route>
