@@ -5,6 +5,7 @@ import { Radio, RadioGroup } from "@chakra-ui/radio";
 import { Center } from "@chakra-ui/react";
 import { Spinner } from "@chakra-ui/spinner";
 import { Grid } from "@chakra-ui/react";
+import { useEffect } from "react";
 
 export const CategoryRadio = (props) => {
   const { category, setCategory, setCategories } = props;
@@ -15,7 +16,9 @@ export const CategoryRadio = (props) => {
   const fetcher = (arg) => fetch(arg).then((res) => res.json());
   const { data, error } = useSWR(url, fetcher);
 
-  if (data) setCategories(data);
+  useEffect(() => {
+    if (data) setCategories(data);
+  }, [data, setCategories]);
   if (error) return <Center>データのアクセスに失敗しました。</Center>;
 
   return (
