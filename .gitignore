@@ -17,9 +17,6 @@ yarn-error.log
 # Docker Compose
 .env
 
-# React build
-public/build
-
 # Breeze buld
 public/js
 public/css
