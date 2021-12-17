@@ -46,7 +46,7 @@ etc
 ### ビルド
 
 -   frontend フォルダにて `yarn build`  
-    ⇨ backend/public にファイル生成される
+    ⇨ public にファイル生成される
 
 ## データ準備
 
