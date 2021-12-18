@@ -122,17 +122,17 @@ export const Ranking = () => {
             <Box fontSize={'sm'} mt='2'>
               {data.length}件ヒットしました!
             </Box>
-            <Box mt='3'>
+            <Box my='3'>
               <PaginateBtn currentPage={currentPage} lastPage={lastPage} changePage={changePage} />
             </Box>
-            <Box borderBottom='solid 1px #ccc' w='6em' textAlign='center' ml='auto' fontSize='sm'>
+            <Box borderBottom='solid 1px #ccc' w='6em' textAlign='center' mx='auto' fontSize='sm'>
               {(currentPage - 1) * process.env.REACT_APP_ITEM_PER_PAGE + 1}
               〜
               {currentPage * process.env.REACT_APP_ITEM_PER_PAGE} 位
             </Box>
             {currentData.map((item, index) => (
-              <Center my='8'>
-                <Box ml="5">
+              <Center key={index} my='12' maxW='30em' mx='auto'>
+                <Box ml="5" maxW="30em">
                   <Flex mb='2' justifyContent='space-between' alignItems='center'>
                     {currentPage === 1 && index === 0 ? (
                       <Box><Image w='12' h='12' src={Ranking1} /></Box>
@@ -143,16 +143,16 @@ export const Ranking = () => {
                     ) : (
                       <Box fontWeight='bold' >{(currentPage - 1) * process.env.REACT_APP_ITEM_PER_PAGE + index + 1} 位</Box>
                     )}
-                    <Box>
-                      <Link to={"/product/" + item.id}>
-                        <Button colorScheme="orange" size="sm" variant='link' >
-                          詳細を見る
-                        </Button>
-                      </Link>
-                    </Box>
                   </Flex>
                   <Box>{item.name}</Box>
-                  <Box my='3'>
+                  <Box textAlign='right'>
+                    <Link to={"/product/" + item.id}>
+                      <Button colorScheme="orange" size="sm" variant='link' >
+                        詳細を見る
+                      </Button>
+                    </Link>
+                  </Box>
+                  <Box mt='3' mb='1'>
                     <Image
                       src={item.small_image_url}
                       fallbackSrc={Logo}

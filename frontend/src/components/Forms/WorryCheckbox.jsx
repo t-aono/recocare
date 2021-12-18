@@ -4,6 +4,7 @@ import { Checkbox } from "@chakra-ui/checkbox";
 import { Center } from "@chakra-ui/layout";
 import { Spinner } from "@chakra-ui/spinner";
 import { Grid, GridItem } from "@chakra-ui/react";
+import { useEffect } from "react";
 
 export const WorryCheckbox = (props) => {
   const { worry, setWorry, setWorries } = props;
@@ -25,7 +26,9 @@ export const WorryCheckbox = (props) => {
   const fetcher = (arg) => fetch(arg).then((res) => res.json());
   const { data, error } = useSWR(url, fetcher);
 
-  if (data) setWorries(data);
+  useEffect(() => {
+    if (data) setWorries(data);
+  }, [data, setWorries])
   if (error) return <Center>データのアクセスに失敗しました。</Center>;
 
   return (

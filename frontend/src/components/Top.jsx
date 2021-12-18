@@ -1,7 +1,6 @@
-import { useEffect } from "react";
 import useSWR from "swr";
 import { Box } from "@chakra-ui/layout";
-import { useLocation, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Image } from "@chakra-ui/image";
 import { Center } from "@chakra-ui/layout";
 import { Button } from "@chakra-ui/button";
@@ -12,8 +11,6 @@ import ReadingSvg from '../svgs/undraw_reading.svg';
 import CrackerSvg from '../svgs/cracker.svg';
 
 export const Top = () => {
-  const location = useLocation();
-
   const url = `${process.env.REACT_APP_BACKEND_HOST}api/count`;
   const fetcher = (arg) => fetch(arg).then((res) => res.json());
   const { data, error } = useSWR(url, fetcher);

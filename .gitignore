@@ -1,12 +1,22 @@
-# PhpStorm
-.idea
+/node_modules
+/public/hot
+/public/storage
+/storage/*.key
+/vendor
+.env
+.env.backup
+.phpunit.result.cache
+docker-compose.override.yml
+Homestead.json
+Homestead.yaml
+npm-debug.log
+yarn-error.log
+/.idea
+/.vscode
 
 # Docker Compose
 .env
 
-# React build
-backend/public/build
-
 # Breeze buld
-backend/public/js
-backend/public/css
+public/js
+public/css
