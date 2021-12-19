@@ -67,6 +67,8 @@ etc
 -   `php artisan iseed <table-name>`
 
 ## 本番環境
+- ユーザー画面  
+    - [https://recosk.tk](https://recosk.tk)
 
 -   ホスティング
     -   [heroku](https://dashboard.heroku.com/apps/recosk)
@@ -76,7 +78,6 @@ etc
     -   マイグレーション　`heroku run php artisan migrate`
     -   シーディング　　　`heroku run php artisan db:seed`
 -   ドメイン
-    -   [https://recosk.tk](https://recosk.tk)
     -   [freenom](https://my.freenom.com/clientarea.php?action=domains)
 -   SSL 化
     -   [CLOUDFLARE](https://dash.cloudflare.com/9587da9b35449514f8ac93d2a9857a8f/recosk.tk)
