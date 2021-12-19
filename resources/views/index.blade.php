@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Recos</title>
+        <title>Recosk</title>
 
         {!! File::get(public_path('build/index.html')) !!}
     </head>
