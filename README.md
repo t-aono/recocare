@@ -74,6 +74,8 @@ etc
     -   [heroku](https://dashboard.heroku.com/apps/recosk)
     -   [スリープ対策：UptimeRobot](https://uptimerobot.com/dashboard#mainDashboard)
 -   コマンド
+    -   フロントのビルド　`cd frontend` → `yarn build`
+    -   デプロイ　　　　　`git push heroku HEAD:main`
     -   ログイン　　　　　`heroku login`
     -   マイグレーション　`heroku run php artisan migrate`
     -   シーディング　　　`heroku run php artisan db:seed`
