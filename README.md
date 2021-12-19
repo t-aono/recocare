@@ -1,4 +1,4 @@
-# Recosk
+# Recos
 
 ## Docker 環境を構築
 
@@ -61,22 +61,6 @@ etc
 
 -   商品一覧から Rakuten API で取得  
     http://localhost/product
-
+    
 ### DB から Seeder を作成
-
--   `php artisan iseed <table-name>`
-
-## 本番環境
-
--   ホスティング
-    -   [heroku](https://dashboard.heroku.com/apps/recosk)
-    -   [スリープ対策：UptimeRobot](https://uptimerobot.com/dashboard#mainDashboard)
--   コマンド
-    -   ログイン　　　　　`heroku login`
-    -   マイグレーション　`heroku run php artisan migrate`
-    -   シーディング　　　`heroku run php artisan db:seed`
--   ドメイン
-    -   [https://recosk.tk](https://recosk.tk)
-    -   [freenom](https://my.freenom.com/clientarea.php?action=domains)
--   SSL 化
-    -   [CLOUDFLARE](https://dash.cloudflare.com/9587da9b35449514f8ac93d2a9857a8f/recosk.tk)
+- `php artisan iseed <table-name>`
