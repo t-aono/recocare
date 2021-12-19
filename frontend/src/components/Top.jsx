@@ -30,7 +30,7 @@ export const Top = () => {
       {data ? (
         <Center>
           <Image src={CrackerSvg} w='14' />
-          <Box fontSize="xl">登録商品数{data.toLocaleString()}点</Box>
+          <Box fontSize="xl">登録商品数 {data.toLocaleString()} 点</Box>
           <Image src={CrackerSvg} w='14' />
         </Center>
       ) : ''}
