@@ -1,32 +1,32 @@
 {
-  "files": {
-    "main.css": "/build/static/css/main.7a4cd8f2.chunk.css",
-    "main.js": "/build/static/js/main.18a9eb1c.chunk.js",
-    "main.js.map": "/build/static/js/main.18a9eb1c.chunk.js.map",
-    "runtime-main.js": "/build/static/js/runtime-main.f55417fc.js",
-    "runtime-main.js.map": "/build/static/js/runtime-main.f55417fc.js.map",
-    "static/js/2.f17126dd.chunk.js": "/build/static/js/2.f17126dd.chunk.js",
-    "static/js/2.f17126dd.chunk.js.map": "/build/static/js/2.f17126dd.chunk.js.map",
-    "static/js/3.f04ad493.chunk.js": "/build/static/js/3.f04ad493.chunk.js",
-    "static/js/3.f04ad493.chunk.js.map": "/build/static/js/3.f04ad493.chunk.js.map",
-    "index.html": "/build/index.html",
-    "static/css/main.7a4cd8f2.chunk.css.map": "/build/static/css/main.7a4cd8f2.chunk.css.map",
-    "static/js/2.f17126dd.chunk.js.LICENSE.txt": "/build/static/js/2.f17126dd.chunk.js.LICENSE.txt",
-    "static/media/cosme.52db0d68.png": "/build/static/media/cosme.52db0d68.png",
-    "static/media/cracker.92b79960.svg": "/build/static/media/cracker.92b79960.svg",
-    "static/media/logo.ac6a0467.png": "/build/static/media/logo.ac6a0467.png",
-    "static/media/ranking1.69644418.svg": "/build/static/media/ranking1.69644418.svg",
-    "static/media/ranking2.d72fce91.svg": "/build/static/media/ranking2.d72fce91.svg",
-    "static/media/ranking3.0ce64a92.svg": "/build/static/media/ranking3.0ce64a92.svg",
-    "static/media/recosk.ef5933a8.png": "/build/static/media/recosk.ef5933a8.png",
-    "static/media/undraw_choose.6957b11e.svg": "/build/static/media/undraw_choose.6957b11e.svg",
-    "static/media/undraw_page_not_found.a9992cb1.svg": "/build/static/media/undraw_page_not_found.a9992cb1.svg",
-    "static/media/undraw_reading.097b3ba7.svg": "/build/static/media/undraw_reading.097b3ba7.svg"
-  },
-  "entrypoints": [
-    "static/js/runtime-main.f55417fc.js",
-    "static/js/2.f17126dd.chunk.js",
-    "static/css/main.7a4cd8f2.chunk.css",
-    "static/js/main.18a9eb1c.chunk.js"
-  ]
+    "files": {
+        "main.css": "/build/static/css/main.7a4cd8f2.chunk.css",
+        "main.js": "/build/static/js/main.18a9eb1c.chunk.js",
+        "main.js.map": "/build/static/js/main.18a9eb1c.chunk.js.map",
+        "runtime-main.js": "/build/static/js/runtime-main.f55417fc.js",
+        "runtime-main.js.map": "/build/static/js/runtime-main.f55417fc.js.map",
+        "static/js/2.f17126dd.chunk.js": "/build/static/js/2.f17126dd.chunk.js",
+        "static/js/2.f17126dd.chunk.js.map": "/build/static/js/2.f17126dd.chunk.js.map",
+        "static/js/3.f04ad493.chunk.js": "/build/static/js/3.f04ad493.chunk.js",
+        "static/js/3.f04ad493.chunk.js.map": "/build/static/js/3.f04ad493.chunk.js.map",
+        "index.html": "/build/index.html",
+        "static/css/main.7a4cd8f2.chunk.css.map": "/build/static/css/main.7a4cd8f2.chunk.css.map",
+        "static/js/2.f17126dd.chunk.js.LICENSE.txt": "/build/static/js/2.f17126dd.chunk.js.LICENSE.txt",
+        "static/media/cosme.52db0d68.png": "/build/static/media/cosme.52db0d68.png",
+        "static/media/cracker.92b79960.svg": "/build/static/media/cracker.92b79960.svg",
+        "static/media/logo.ac6a0467.png": "/build/static/media/logo.ac6a0467.png",
+        "static/media/ranking1.69644418.svg": "/build/static/media/ranking1.69644418.svg",
+        "static/media/ranking2.d72fce91.svg": "/build/static/media/ranking2.d72fce91.svg",
+        "static/media/ranking3.0ce64a92.svg": "/build/static/media/ranking3.0ce64a92.svg",
+        "static/media/recosk.ef5933a8.png": "/build/static/media/recosk.ef5933a8.png",
+        "static/media/undraw_choose.6957b11e.svg": "/build/static/media/undraw_choose.6957b11e.svg",
+        "static/media/undraw_page_not_found.a9992cb1.svg": "/build/static/media/undraw_page_not_found.a9992cb1.svg",
+        "static/media/undraw_reading.097b3ba7.svg": "/build/static/media/undraw_reading.097b3ba7.svg"
+    },
+    "entrypoints": [
+        "static/js/runtime-main.f55417fc.js",
+        "static/js/2.f17126dd.chunk.js",
+        "static/css/main.7a4cd8f2.chunk.css",
+        "static/js/main.18a9eb1c.chunk.js"
+    ]
 }
