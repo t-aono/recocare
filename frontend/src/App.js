@@ -18,7 +18,7 @@ function App() {
       <Header />
       <Container className={styles.mainFontStyle} w='100%'>
         <BrowserRouter>
-          <Tracking trackingId='G-YNPBJTDEHY' />
+          <Tracking trackingId='G-YNY7NS9MHW' />
           <ScrollToTop/>
           <Switch>
             <Route exact path="/">
