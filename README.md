@@ -52,7 +52,7 @@ etc
 
 ### 効果と成分
 
--   サイトからスクレイピング  
+-   [サイト](https://liruu.jp/ingredients/)からスクレイピング  
     [スプレッドシート「化粧品成分一覧」](https://docs.google.com/spreadsheets/d/1KvcgP5QfpR3PxW7kzyUeMIP1WJ7lY35aNQ1QduyJIkA/edit#gid=0)
 -   csv 出力して成分一覧からインポート  
     http://localhost/ingredient
@@ -67,16 +67,19 @@ etc
 -   `php artisan iseed <table-name>`
 
 ## 本番環境
+- ユーザー画面  
+    - [https://recosk.tk](https://recosk.tk)
 
 -   ホスティング
     -   [heroku](https://dashboard.heroku.com/apps/recosk)
     -   [スリープ対策：UptimeRobot](https://uptimerobot.com/dashboard#mainDashboard)
 -   コマンド
+    -   フロントのビルド　`cd frontend` → `yarn build`
+    -   デプロイ　　　　　`git push heroku HEAD:main`
     -   ログイン　　　　　`heroku login`
     -   マイグレーション　`heroku run php artisan migrate`
     -   シーディング　　　`heroku run php artisan db:seed`
 -   ドメイン
-    -   [https://recosk.tk](https://recosk.tk)
     -   [freenom](https://my.freenom.com/clientarea.php?action=domains)
 -   SSL 化
     -   [CLOUDFLARE](https://dash.cloudflare.com/9587da9b35449514f8ac93d2a9857a8f/recosk.tk)
