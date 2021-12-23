@@ -22,6 +22,7 @@ class RakutenItemService
             $last = 1;
             while ($page <= $last) {
                 $response = $client->execute('IchibaItemSearch', array(
+                    'affiliateId' => config('app.affiliate_id'),
                     'keyword' => '有効成分',
                     'genreId' => $genre_id,
                     'page' => $page,

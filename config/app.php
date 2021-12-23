@@ -124,6 +124,7 @@ return [
     'cipher' => 'AES-256-CBC',
 
     'rakuten_id' => env('RAKUTEN_APPLICATION_ID', false),
+    'affiliate_id' => env('RAKUTEN_AFFILIATE_ID', false),
 
     /*
     |--------------------------------------------------------------------------

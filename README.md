@@ -9,7 +9,9 @@ make restart
 etc
 ```
 
-ホーム URL：http://localhost
+-   ホーム URL：http://localhost
+-   管理画面：http://localhost/login  
+    recos3221@ne.jp / 3221
 
 ## コンテナ構造
 
