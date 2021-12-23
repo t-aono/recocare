@@ -66,7 +66,7 @@ export const Product = () => {
           <Box>{createdDate}</Box>
         </Box>
         <Box my='5' textAlign={'center'}>
-          <Link href={data.rakuten_url} isExternal={true} >
+          <Link href={data.afflliate_url} isExternal={true} >
             <Button colorScheme="red" variant="outline">
               楽天で見る
               <ExternalLinkIcon mx='2px' />
