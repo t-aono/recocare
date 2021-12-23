@@ -61,7 +61,7 @@ etc
 
 ### ジャンルと商品
 
--   商品一覧から Rakuten API で取得  
+-   商品一覧から Rakuten API で取得（アプリID・アフィリエイトIDが必要）  
     http://localhost/product
 
 ### DB から Seeder を作成
