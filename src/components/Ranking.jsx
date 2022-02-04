@@ -163,8 +163,8 @@ export const Ranking = () => {
                       borderRadius="lg"
                     />
                   </Box>
-                  {item.recomend.map(reco => (
-                    <Box key={reco.ingredient} my='3'>
+                  {item.recomend.map((reco, i) => (
+                    <Box key={reco.ingredient + i} my='3'>
                       <Box display='inline' background="gray.400" fontWeight='bold' color="#fff" py='1' px='3' mr='1' borderRadius='full'>{reco.effective}</Box>の対策におすすめ<br />
                       <Box display='inline' borderBottom="2px solid orange">{reco.ingredient}</Box> 配合
                     </Box>

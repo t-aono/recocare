@@ -42,15 +42,24 @@ etc
 
 ### ローカル
 
--   frontend フォルダにて `yarn start`  
+-   ユーザ―画面（React）：`yarn start`  
     http://localhost:3000 にアクセス
+-   管理画面（Laravel）：`npm run watch-poll`  
+    http://localhost/login/ にアクセス
 
 ### ビルド
 
--   frontend フォルダにて `yarn build`  
-    ⇨ public にファイル生成される
+-   ユーザ―画面（React）：`yarn build` → public に build フォルダ生成される
+-   管理画面（Laravel）：`npm run prod` → public/css, js フォルダ生成
 
 ## データ準備
+
+### コマンド
+
+```
+make migrate
+make seed
+```
 
 ### 効果と成分
 
@@ -61,7 +70,7 @@ etc
 
 ### ジャンルと商品
 
--   商品一覧から Rakuten API で取得（アプリID・アフィリエイトIDが必要）  
+-   商品一覧から Rakuten API で取得（アプリ ID・アフィリエイト ID が必要）  
     http://localhost/product
 
 ### DB から Seeder を作成
@@ -69,8 +78,10 @@ etc
 -   `php artisan iseed <table-name>`
 
 ## 本番環境
-- ユーザー画面  
-    - [https://recosk.tk](https://recosk.tk)
+
+-   ユーザー画面
+
+    -   [https://recosk.tk](https://recosk.tk)
 
 -   ホスティング
     -   [heroku](https://dashboard.heroku.com/apps/recosk)
