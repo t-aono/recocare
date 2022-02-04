@@ -9,7 +9,7 @@ import { ArrowBackIcon, ExternalLinkIcon } from "@chakra-ui/icons";
 import styles from "../MainStyles.module.css";
 import { Image } from "@chakra-ui/image";
 
-type Product = {
+type ProductType = {
   created_at: string;
   name: string;
   medium_image_url: string;
@@ -19,12 +19,12 @@ type Product = {
 };
 
 export const Product = () => {
-  const { goBack } = useHistory();
+  const history = useHistory();
   const { id } = useParams<{ id: string }>();
 
   const url = `${process.env.REACT_APP_BACKEND_HOST}api/product/${id}`;
   const fetcher = (arg: string) => fetch(arg).then((res) => res.json());
-  const { data, error } = useSWR<Product>(url, fetcher);
+  const { data, error } = useSWR<ProductType>(url, fetcher);
 
   let createdDate = "";
   if (data && data.created_at) {
@@ -73,7 +73,7 @@ export const Product = () => {
         <Box>{data.caption}</Box>
       </Box>
       <Center mt="10">
-        <Link size="lg" mb="10" variant="link" onClick={() => goBack}>
+        <Link size="lg" mb="10" variant="link" onClick={() => history.goBack()}>
           <ArrowBackIcon w="7" h="7" />
           ランキングに戻る
         </Link>

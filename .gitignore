@@ -20,3 +20,5 @@ yarn-error.log
 # Breeze buld
 public/js
 public/css
+
+.DS_Store

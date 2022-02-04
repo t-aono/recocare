@@ -39,7 +39,7 @@ class RankingProducts extends Controller
         $result = [];
         foreach ($products as $product) {
             $point = 0;
-            $recommmend = [];
+            $recommend = [];
             preg_match("/有効成分.+/", $product->caption, $caption);
             if (!$caption) {
                 preg_match("/成分.+/", $product->caption, $caption);
@@ -49,7 +49,7 @@ class RankingProducts extends Controller
                     $ingredients = $effect->getIngredientNames($effect_id);
                     foreach ($ingredients as $ingredient) {
                         if (strpos($caption[0], $ingredient) !== false) {
-                            $recommmend[] = [
+                            $recommend[] = [
                                 'effective' => $effect->find($effect_id)->name,
                                 'ingredient' => $ingredient
                             ];
@@ -58,7 +58,7 @@ class RankingProducts extends Controller
                     }
                 }
             }
-            $result[] = array_merge($product->toArray(), ['recomend' => $recommmend, 'point' => $point]);
+            $result[] = array_merge($product->toArray(), ['recommend' => $recommend, 'point' => $point]);
         }
 
         usort($result, function ($a, $b) {
