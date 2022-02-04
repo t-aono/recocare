@@ -1,6 +1,6 @@
 import { useHistory, useParams } from "react-router-dom";
 import useSWR from "swr";
-import { Link } from '@chakra-ui/react'
+import { Link } from "@chakra-ui/react";
 import { Box, Center } from "@chakra-ui/layout";
 import { Button } from "@chakra-ui/button";
 import { SkeletonText } from "@chakra-ui/skeleton";
@@ -9,13 +9,22 @@ import { ArrowBackIcon, ExternalLinkIcon } from "@chakra-ui/icons";
 import styles from "../MainStyles.module.css";
 import { Image } from "@chakra-ui/image";
 
+type Product = {
+  created_at: string;
+  name: string;
+  medium_image_url: string;
+  price: number;
+  affiliate_url: string;
+  caption: string;
+};
+
 export const Product = () => {
-  const history = useHistory();
-  const { id } = useParams();
+  const { goBack } = useHistory();
+  const { id } = useParams<{ id: string }>();
 
   const url = `${process.env.REACT_APP_BACKEND_HOST}api/product/${id}`;
-  const fetcher = (arg) => fetch(arg).then((res) => res.json());
-  const { data, error } = useSWR(url, fetcher);
+  const fetcher = (arg: string) => fetch(arg).then((res) => res.json());
+  const { data, error } = useSWR<Product>(url, fetcher);
 
   let createdDate = "";
   if (data && data.created_at) {
@@ -24,17 +33,7 @@ export const Product = () => {
   }
 
   if (error) return <Center>データのアクセスに失敗しました。</Center>;
-  if (!data)
-    return (
-      <SkeletonText
-        mt="10"
-        mb="10"
-        pt="5"
-        pb="5"
-        startColor="red.300"
-        endColor="red.100"
-      ></SkeletonText>
-    );
+  if (!data) return <SkeletonText mt="10" mb="10" pt="5" pb="5" startColor="red.300" endColor="red.100"></SkeletonText>;
 
   return (
     <>
@@ -42,15 +41,12 @@ export const Product = () => {
         <Center as="h1" fontSize="xl">
           商品詳細
         </Center>
-        <Box mt='5' fontWeight="bold">商品名</Box>
+        <Box mt="5" fontWeight="bold">
+          商品名
+        </Box>
         <Box>{data.name}</Box>
-        <Box p='10' className={styles.flexGrow}>
-          <Image
-            src={data.medium_image_url}
-            alt={data.name}
-            objectFit="contain"
-            w="100%"
-          />
+        <Box p="10" className={styles.flexGrow}>
+          <Image src={data.medium_image_url} alt={data.name} objectFit="contain" w="100%" />
         </Box>
         <Box>
           <Box fontWeight="bold">価格</Box>
@@ -61,15 +57,15 @@ export const Product = () => {
             })}
           </Box>
         </Box>
-        <Box mt='3'>
+        <Box mt="3">
           <Box fontWeight="bold">登録日</Box>
           <Box>{createdDate}</Box>
         </Box>
-        <Box my='5' textAlign={'center'}>
-          <Link href={data.afflliate_url} isExternal={true} >
+        <Box my="5" textAlign={"center"}>
+          <Link href={data.affiliate_url} isExternal={true}>
             <Button colorScheme="red" variant="outline">
               楽天で見る
-              <ExternalLinkIcon mx='2px' />
+              <ExternalLinkIcon mx="2px" />
             </Button>
           </Link>
         </Box>
@@ -77,12 +73,7 @@ export const Product = () => {
         <Box>{data.caption}</Box>
       </Box>
       <Center mt="10">
-        <Link
-          size="lg"
-          mb="10"
-          variant="link"
-          onClick={() => history.goBack()}
-        >
+        <Link size="lg" mb="10" variant="link" onClick={() => goBack}>
           <ArrowBackIcon w="7" h="7" />
           ランキングに戻る
         </Link>
