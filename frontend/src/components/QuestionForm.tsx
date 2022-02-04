@@ -43,9 +43,9 @@ export const QuestionForm = () => {
   const history = useHistory<History>();
   const location = useLocation<Location>();
   const toast = useToast();
-  const [category, setCategory] = useState<string>();
+  const [category, setCategory] = useState<string>("");
   const [categories, setCategories] = useState<Genre[]>();
-  const [worry, setWorry] = useState<string[]>();
+  const [worry, setWorry] = useState<string[]>([""]);
   const [worries, setWorries] = useState<Effect[]>();
   const [price, setPrice] = useState("");
 
@@ -58,7 +58,7 @@ export const QuestionForm = () => {
   }, [location.state]);
 
   const checkAnswer = () => {
-    if (!category || worry!.length) {
+    if (category === "" || worry.length === 0) {
       toast({
         status: "warning",
         variant: "top-accent",
@@ -72,7 +72,7 @@ export const QuestionForm = () => {
         state: {
           genre: category,
           genreName: categories!.find((cate) => cate!.genre_id === category)!.name,
-          effects: worry!,
+          effects: worry.filter((w) => w),
           effectNames: worries!.map((wo) => worry!.includes(String(wo.id)) && wo.name).filter((wo) => wo) as string[],
           price: price,
         },
@@ -90,13 +90,20 @@ export const QuestionForm = () => {
           <Image src={ChooseSvg} my={10} w="100vw" objectFit="contain" />
         </Box>
         <VStack spacing={12}>
-          <CategoryRadio category={category as string} setCategory={setCategory} setCategories={setCategories} />
-          <WorryCheckbox worry={worry as string[]} setWorry={setWorry} setWorries={setWorries} />
+          <CategoryRadio category={category} setCategory={setCategory} setCategories={setCategories} />
+          <WorryCheckbox worry={worry} setWorry={setWorry} setWorries={setWorries} />
           <PriceRadio price={price} setPrice={setPrice} />
         </VStack>
       </Box>
       <Center mt="5em">
-        <Button className={styles.primaryBtn} colorScheme="red500" height="65px" width="200px" size="lg" onClick={checkAnswer}>
+        <Button
+          className={styles.primaryBtn}
+          colorScheme="red500"
+          height="65px"
+          width="200px"
+          size="lg"
+          onClick={checkAnswer}
+        >
           回答する
         </Button>
       </Center>

@@ -33,6 +33,8 @@ export const WorryCheckbox = (props: Props) => {
     }
   };
 
+  // console.log(worry);
+
   const url = `${process.env.REACT_APP_BACKEND_HOST}api/effect`;
   const fetcher = (arg: string): Promise<Effect[]> => fetch(arg).then((res) => res.json());
   const { data, error } = useSWR(url, fetcher);
@@ -51,7 +53,12 @@ export const WorryCheckbox = (props: Props) => {
         <Grid templateColumns="repeat(2, 1fr)" columnGap={1} rowGap={3}>
           {data.map((effect) => (
             <GridItem key={effect["id"]} value={worry}>
-              <Checkbox colorScheme="orange" value={effect["id"]} onChange={onChangeCheckbox} isChecked={worry.includes(String(effect["id"]))}>
+              <Checkbox
+                colorScheme="orange"
+                value={effect["id"]}
+                onChange={onChangeCheckbox}
+                isChecked={worry.includes(String(effect["id"]))}
+              >
                 {effect["name"]}
               </Checkbox>
             </GridItem>
