@@ -22,8 +22,8 @@ class CreateProductsTable extends Migration
             $table->string('genre_id');
             $table->string('parent_genre_id');
             $table->text('item_url');
-            $table->text('afflliate_url');
-            $table->string('afflliate_rate');
+            $table->text('affiliate_url_url');
+            $table->string('affiliate_url_rate');
             $table->string('small_image_url');
             $table->string('medium_image_url');
             $table->timestamps();
