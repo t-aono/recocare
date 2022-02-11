@@ -19,9 +19,7 @@ class Product extends Model
         foreach ($items as $value) {
             $item = $value['Item'];
             $record = [];
-
-            // dd($item);
-
+            
             $record['item_code'] = $item['itemCode'];
             $record['name'] = $item['itemName'];
             $record['caption'] = $item['itemCaption'];

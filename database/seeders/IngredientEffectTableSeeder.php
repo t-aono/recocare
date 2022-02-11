@@ -21,518 +21,518 @@ class IngredientEffectTableSeeder extends Seeder
         \DB::table('ingredient_effect')->insert(array (
             0 => 
             array (
-                'effect_id' => 1,
                 'ingredient_id' => 1,
+                'effect_id' => 1,
             ),
             1 => 
             array (
-                'effect_id' => 2,
                 'ingredient_id' => 2,
+                'effect_id' => 2,
             ),
             2 => 
             array (
-                'effect_id' => 3,
                 'ingredient_id' => 2,
+                'effect_id' => 3,
             ),
             3 => 
             array (
-                'effect_id' => 4,
                 'ingredient_id' => 2,
+                'effect_id' => 4,
             ),
             4 => 
             array (
-                'effect_id' => 5,
                 'ingredient_id' => 2,
+                'effect_id' => 5,
             ),
             5 => 
             array (
-                'effect_id' => 1,
                 'ingredient_id' => 4,
+                'effect_id' => 1,
             ),
             6 => 
             array (
-                'effect_id' => 6,
                 'ingredient_id' => 6,
+                'effect_id' => 6,
             ),
             7 => 
             array (
-                'effect_id' => 7,
                 'ingredient_id' => 7,
+                'effect_id' => 7,
             ),
             8 => 
             array (
-                'effect_id' => 8,
                 'ingredient_id' => 7,
+                'effect_id' => 8,
             ),
             9 => 
             array (
-                'effect_id' => 3,
                 'ingredient_id' => 7,
+                'effect_id' => 3,
             ),
             10 => 
             array (
-                'effect_id' => 1,
                 'ingredient_id' => 8,
+                'effect_id' => 1,
             ),
             11 => 
             array (
-                'effect_id' => 7,
                 'ingredient_id' => 9,
+                'effect_id' => 7,
             ),
             12 => 
             array (
-                'effect_id' => 1,
                 'ingredient_id' => 9,
+                'effect_id' => 1,
             ),
             13 => 
             array (
-                'effect_id' => 4,
                 'ingredient_id' => 9,
+                'effect_id' => 4,
             ),
             14 => 
             array (
-                'effect_id' => 5,
                 'ingredient_id' => 9,
+                'effect_id' => 5,
             ),
             15 => 
             array (
-                'effect_id' => 3,
                 'ingredient_id' => 10,
+                'effect_id' => 3,
             ),
             16 => 
             array (
-                'effect_id' => 6,
                 'ingredient_id' => 11,
+                'effect_id' => 6,
             ),
             17 => 
             array (
-                'effect_id' => 7,
                 'ingredient_id' => 12,
+                'effect_id' => 7,
             ),
             18 => 
             array (
-                'effect_id' => 3,
                 'ingredient_id' => 12,
+                'effect_id' => 3,
             ),
             19 => 
             array (
-                'effect_id' => 4,
                 'ingredient_id' => 13,
+                'effect_id' => 4,
             ),
             20 => 
             array (
-                'effect_id' => 1,
                 'ingredient_id' => 14,
+                'effect_id' => 1,
             ),
             21 => 
             array (
-                'effect_id' => 3,
                 'ingredient_id' => 15,
+                'effect_id' => 3,
             ),
             22 => 
             array (
-                'effect_id' => 3,
                 'ingredient_id' => 16,
+                'effect_id' => 3,
             ),
             23 => 
             array (
-                'effect_id' => 3,
                 'ingredient_id' => 17,
+                'effect_id' => 3,
             ),
             24 => 
             array (
-                'effect_id' => 9,
                 'ingredient_id' => 18,
+                'effect_id' => 9,
             ),
             25 => 
             array (
-                'effect_id' => 1,
                 'ingredient_id' => 18,
+                'effect_id' => 1,
             ),
             26 => 
             array (
-                'effect_id' => 1,
                 'ingredient_id' => 19,
+                'effect_id' => 1,
             ),
             27 => 
             array (
-                'effect_id' => 7,
                 'ingredient_id' => 20,
+                'effect_id' => 7,
             ),
             28 => 
             array (
-                'effect_id' => 3,
                 'ingredient_id' => 20,
+                'effect_id' => 3,
             ),
             29 => 
             array (
-                'effect_id' => 9,
                 'ingredient_id' => 20,
+                'effect_id' => 9,
             ),
             30 => 
             array (
-                'effect_id' => 7,
                 'ingredient_id' => 22,
+                'effect_id' => 7,
             ),
             31 => 
             array (
-                'effect_id' => 4,
                 'ingredient_id' => 22,
+                'effect_id' => 4,
             ),
             32 => 
             array (
-                'effect_id' => 5,
                 'ingredient_id' => 22,
+                'effect_id' => 5,
             ),
             33 => 
             array (
-                'effect_id' => 9,
                 'ingredient_id' => 23,
+                'effect_id' => 9,
             ),
             34 => 
             array (
-                'effect_id' => 1,
                 'ingredient_id' => 23,
+                'effect_id' => 1,
             ),
             35 => 
             array (
-                'effect_id' => 3,
                 'ingredient_id' => 24,
+                'effect_id' => 3,
             ),
             36 => 
             array (
-                'effect_id' => 8,
                 'ingredient_id' => 25,
+                'effect_id' => 8,
             ),
             37 => 
             array (
-                'effect_id' => 6,
                 'ingredient_id' => 27,
+                'effect_id' => 6,
             ),
             38 => 
             array (
-                'effect_id' => 9,
                 'ingredient_id' => 28,
+                'effect_id' => 9,
             ),
             39 => 
             array (
-                'effect_id' => 1,
                 'ingredient_id' => 28,
+                'effect_id' => 1,
             ),
             40 => 
             array (
-                'effect_id' => 3,
                 'ingredient_id' => 29,
+                'effect_id' => 3,
             ),
             41 => 
             array (
-                'effect_id' => 1,
                 'ingredient_id' => 29,
+                'effect_id' => 1,
             ),
             42 => 
             array (
-                'effect_id' => 7,
                 'ingredient_id' => 30,
+                'effect_id' => 7,
             ),
             43 => 
             array (
-                'effect_id' => 1,
                 'ingredient_id' => 30,
+                'effect_id' => 1,
             ),
             44 => 
             array (
-                'effect_id' => 4,
                 'ingredient_id' => 31,
+                'effect_id' => 4,
             ),
             45 => 
             array (
-                'effect_id' => 9,
                 'ingredient_id' => 32,
+                'effect_id' => 9,
             ),
             46 => 
             array (
-                'effect_id' => 1,
                 'ingredient_id' => 32,
+                'effect_id' => 1,
             ),
             47 => 
             array (
-                'effect_id' => 7,
                 'ingredient_id' => 33,
+                'effect_id' => 7,
             ),
             48 => 
             array (
-                'effect_id' => 8,
                 'ingredient_id' => 33,
+                'effect_id' => 8,
             ),
             49 => 
             array (
-                'effect_id' => 6,
                 'ingredient_id' => 33,
+                'effect_id' => 6,
             ),
             50 => 
             array (
-                'effect_id' => 6,
                 'ingredient_id' => 34,
+                'effect_id' => 6,
             ),
             51 => 
             array (
-                'effect_id' => 6,
                 'ingredient_id' => 35,
+                'effect_id' => 6,
             ),
             52 => 
             array (
-                'effect_id' => 7,
                 'ingredient_id' => 36,
+                'effect_id' => 7,
             ),
             53 => 
             array (
-                'effect_id' => 8,
                 'ingredient_id' => 36,
+                'effect_id' => 8,
             ),
             54 => 
             array (
-                'effect_id' => 6,
                 'ingredient_id' => 36,
+                'effect_id' => 6,
             ),
             55 => 
             array (
-                'effect_id' => 10,
                 'ingredient_id' => 36,
+                'effect_id' => 10,
             ),
             56 => 
             array (
-                'effect_id' => 7,
                 'ingredient_id' => 37,
+                'effect_id' => 7,
             ),
             57 => 
             array (
-                'effect_id' => 3,
                 'ingredient_id' => 37,
+                'effect_id' => 3,
             ),
             58 => 
             array (
-                'effect_id' => 3,
                 'ingredient_id' => 38,
+                'effect_id' => 3,
             ),
             59 => 
             array (
-                'effect_id' => 4,
                 'ingredient_id' => 38,
+                'effect_id' => 4,
             ),
             60 => 
             array (
-                'effect_id' => 2,
                 'ingredient_id' => 39,
+                'effect_id' => 2,
             ),
             61 => 
             array (
-                'effect_id' => 8,
                 'ingredient_id' => 39,
+                'effect_id' => 8,
             ),
             62 => 
             array (
-                'effect_id' => 3,
                 'ingredient_id' => 39,
+                'effect_id' => 3,
             ),
             63 => 
             array (
-                'effect_id' => 3,
                 'ingredient_id' => 40,
+                'effect_id' => 3,
             ),
             64 => 
             array (
-                'effect_id' => 9,
                 'ingredient_id' => 40,
+                'effect_id' => 9,
             ),
             65 => 
             array (
-                'effect_id' => 1,
                 'ingredient_id' => 40,
+                'effect_id' => 1,
             ),
             66 => 
             array (
-                'effect_id' => 4,
                 'ingredient_id' => 40,
+                'effect_id' => 4,
             ),
             67 => 
             array (
-                'effect_id' => 5,
                 'ingredient_id' => 40,
+                'effect_id' => 5,
             ),
             68 => 
             array (
-                'effect_id' => 1,
                 'ingredient_id' => 41,
+                'effect_id' => 1,
             ),
             69 => 
             array (
-                'effect_id' => 4,
                 'ingredient_id' => 41,
+                'effect_id' => 4,
             ),
             70 => 
             array (
-                'effect_id' => 3,
                 'ingredient_id' => 42,
+                'effect_id' => 3,
             ),
             71 => 
             array (
-                'effect_id' => 6,
                 'ingredient_id' => 42,
+                'effect_id' => 6,
             ),
             72 => 
             array (
-                'effect_id' => 10,
                 'ingredient_id' => 42,
+                'effect_id' => 10,
             ),
             73 => 
             array (
-                'effect_id' => 11,
                 'ingredient_id' => 44,
+                'effect_id' => 11,
             ),
             74 => 
             array (
-                'effect_id' => 3,
                 'ingredient_id' => 44,
+                'effect_id' => 3,
             ),
             75 => 
             array (
-                'effect_id' => 6,
                 'ingredient_id' => 45,
+                'effect_id' => 6,
             ),
             76 => 
             array (
-                'effect_id' => 7,
                 'ingredient_id' => 46,
+                'effect_id' => 7,
             ),
             77 => 
             array (
-                'effect_id' => 3,
                 'ingredient_id' => 47,
+                'effect_id' => 3,
             ),
             78 => 
             array (
-                'effect_id' => 1,
                 'ingredient_id' => 48,
+                'effect_id' => 1,
             ),
             79 => 
             array (
-                'effect_id' => 6,
                 'ingredient_id' => 50,
+                'effect_id' => 6,
             ),
             80 => 
             array (
-                'effect_id' => 11,
                 'ingredient_id' => 51,
+                'effect_id' => 11,
             ),
             81 => 
             array (
-                'effect_id' => 3,
                 'ingredient_id' => 51,
+                'effect_id' => 3,
             ),
             82 => 
             array (
-                'effect_id' => 12,
                 'ingredient_id' => 51,
+                'effect_id' => 12,
             ),
             83 => 
             array (
-                'effect_id' => 1,
                 'ingredient_id' => 52,
+                'effect_id' => 1,
             ),
             84 => 
             array (
-                'effect_id' => 7,
                 'ingredient_id' => 53,
+                'effect_id' => 7,
             ),
             85 => 
             array (
-                'effect_id' => 4,
                 'ingredient_id' => 53,
+                'effect_id' => 4,
             ),
             86 => 
             array (
-                'effect_id' => 3,
                 'ingredient_id' => 57,
+                'effect_id' => 3,
             ),
             87 => 
             array (
-                'effect_id' => 3,
                 'ingredient_id' => 58,
+                'effect_id' => 3,
             ),
             88 => 
             array (
-                'effect_id' => 9,
                 'ingredient_id' => 58,
+                'effect_id' => 9,
             ),
             89 => 
             array (
-                'effect_id' => 7,
                 'ingredient_id' => 61,
+                'effect_id' => 7,
             ),
             90 => 
             array (
-                'effect_id' => 2,
                 'ingredient_id' => 61,
+                'effect_id' => 2,
             ),
             91 => 
             array (
-                'effect_id' => 8,
                 'ingredient_id' => 61,
+                'effect_id' => 8,
             ),
             92 => 
             array (
-                'effect_id' => 7,
                 'ingredient_id' => 63,
+                'effect_id' => 7,
             ),
             93 => 
             array (
-                'effect_id' => 7,
                 'ingredient_id' => 64,
+                'effect_id' => 7,
             ),
             94 => 
             array (
-                'effect_id' => 8,
                 'ingredient_id' => 64,
+                'effect_id' => 8,
             ),
             95 => 
             array (
-                'effect_id' => 3,
                 'ingredient_id' => 67,
+                'effect_id' => 3,
             ),
             96 => 
             array (
-                'effect_id' => 6,
                 'ingredient_id' => 68,
+                'effect_id' => 6,
             ),
             97 => 
             array (
-                'effect_id' => 3,
                 'ingredient_id' => 70,
+                'effect_id' => 3,
             ),
             98 => 
             array (
-                'effect_id' => 7,
                 'ingredient_id' => 71,
+                'effect_id' => 7,
             ),
             99 => 
             array (
-                'effect_id' => 6,
                 'ingredient_id' => 75,
+                'effect_id' => 6,
             ),
             100 => 
             array (
-                'effect_id' => 7,
                 'ingredient_id' => 77,
+                'effect_id' => 7,
             ),
             101 => 
             array (
-                'effect_id' => 2,
                 'ingredient_id' => 77,
+                'effect_id' => 2,
             ),
             102 => 
             array (
-                'effect_id' => 1,
                 'ingredient_id' => 77,
+                'effect_id' => 1,
             ),
         ));
         

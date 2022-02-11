@@ -43,7 +43,8 @@
                             </ul>
                         </div>
 
-                        <div class='my-5'>
+                        <div class='my-10'>
+                            <h3 class="text-lg font-bold mb-3">商品</h3>
                             <input type="submit" name="item" value="商品データ更新"
                                 class="ml-3 bg-white hover:bg-gray-100 text-gray-800 font-semibold my-1 py-1 px-2 border border-gray-400 rounded shadow" />
 
