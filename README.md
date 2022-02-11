@@ -31,19 +31,17 @@ Base image : [nginx](https://hub.docker.com/_/nginx):1.20-alpine / [node](https:
 
 ### db container
 
-Base image : [mysql/mysql-server](https://hub.docker.com/r/mysql/mysql-server):8.0
+Base image : [postgres](https://hub.docker.com/_/postgres)
 
 ## フロントエンド
 
 ### ローカル開発環境
 
-frontend フォルダにて `yarn start`  
-→ http://localhost:3000 にアクセス
+frontend フォルダにて `yarn start` → http://localhost:3000 にアクセス
 
 ### デプロイ時のビルド
 
-frontend フォルダにて `yarn build`  
-⇨ public にファイル生成される
+frontend フォルダにて `yarn build` → public にファイル生成される
 
 ### ヘッダー画像
 
@@ -65,6 +63,8 @@ Canva を使って作成
 
 ### DB から Seeder を作成
 
+以下のコマンドで Seeder ファイルが作成できる。
+
 ```
 php artisan iseed <table-name>
 ```
@@ -81,19 +81,21 @@ php artisan iseed <table-name>
 
 - SSL 化：[CLOUDFLARE](https://dash.cloudflare.com/9587da9b35449514f8ac93d2a9857a8f/recocare.tk)
 
-```
-  フロントのビルド
-  cd frontend && yarn build
+- デプロイ関連コマンド
 
-  Herokuへデプロイ
-  git push heroku HEAD:main
+    ```
+    フロントのビルド
+    cd frontend && yarn build
 
-  Heroku CLI ログイン
-  heroku login
+    Herokuへデプロイ
+    git push heroku HEAD:main
 
-  マイグレーション
-  heroku run php artisan migrate
+    Heroku CLI ログイン
+    heroku login
 
-  シーディング
-  heroku run php artisan db:seed
-```
+    マイグレーション
+    heroku run php artisan migrate
+
+    シーディング
+    heroku run php artisan db:seed
+    ```

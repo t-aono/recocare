@@ -38,11 +38,11 @@ class Ingredient extends Model
 
     public function trancateRelationTable()
     {
-        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+        DB::statement('SET CONSTRAINTS ALL DEFERRED;');
         DB::table('ingredient_effect')->truncate();
         DB::table('ingredients')->truncate();
         DB::table('effects')->truncate();
-        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+        DB::statement('SET CONSTRAINTS ALL IMMEDIATE;');
     }
 
     public function saveIngredientEffect($line)

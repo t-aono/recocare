@@ -14,6 +14,7 @@ class RakutenGenreService
         $response = $client->execute('IchibaGenreSearch', array(
             'genreId' => $genre_id
         ));
+
         if ($response->isOk()) {
             $children = [];
             foreach ($response['children'] as $value) {

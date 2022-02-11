@@ -14,9 +14,9 @@ class Genre extends Model
 
     public function trancateAndCreate($children)
     {
-        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+        DB::statement('SET CONSTRAINTS ALL DEFERRED;');
         DB::table('genres')->truncate();
-        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+        DB::statement('SET CONSTRAINTS ALL IMMEDIATE;');
 
         foreach ($children as $child) {
             $this->create($child);
