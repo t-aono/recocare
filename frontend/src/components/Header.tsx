@@ -1,6 +1,6 @@
 import { Flex, Box } from "@chakra-ui/react";
 import { Image } from "@chakra-ui/image";
-import HeaderImage from "../images/recosk.png";
+import HeaderImage from "../images/recocare.png";
 
 export const Header = () => {
   return (
