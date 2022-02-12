@@ -32,7 +32,7 @@ type History =
 type Item = {
   id: string;
   name: string;
-  small_image_url: string;
+  medium_image_url: string;
   recommend: {
     effective: string;
     ingredient: string;
@@ -196,7 +196,7 @@ export const Ranking = () => {
                   </Box>
                   <Box mt="3" mb="1">
                     <Image
-                      src={item.small_image_url}
+                      src={item.medium_image_url}
                       fallbackSrc={Logo}
                       alt={item.name}
                       objectFit="contain"

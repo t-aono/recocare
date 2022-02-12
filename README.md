@@ -58,7 +58,7 @@ Canva を使って作成
 
 ### ジャンルと商品
 
-商品一覧から Rakuten API で取得（アプリ ID・アフィリエイト ID が必要）  
+商品一覧から [楽天商品検索API](https://webservice.rakuten.co.jp/documentation/ichiba-item-search) で取得（アプリ ID・アフィリエイト ID が必要）  
 商品一覧ページ：http://localhost/product
 
 ### DB から Seeder を作成
