@@ -4,6 +4,10 @@
     "Hiragino Kaku Gothic Pro", "HG丸ｺﾞｼｯｸM-PRO", "HGMaruGothicMPRO";
 }
 
+.linkWrap > a:hover {
+  text-decoration: none;
+}
+
 .featureInactive {
   color: #ccc;
 }

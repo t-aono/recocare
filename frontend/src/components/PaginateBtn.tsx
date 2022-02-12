@@ -1,6 +1,8 @@
 import { ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons";
 import { Flex, Box, Link } from "@chakra-ui/react";
 
+import styles from "../MainStyles.module.css";
+
 type Props = {
   currentPage: number;
   lastPage: number;
@@ -11,7 +13,7 @@ export const PaginateBtn = (props: Props) => {
   const { currentPage, lastPage, changePage } = props;
 
   return (
-    <Flex justifyContent="space-between">
+    <Flex justifyContent="space-between" className={styles.linkWrap}>
       {currentPage !== 1 ? (
         <Link onClick={() => changePage(currentPage - 1)}>
           <ChevronLeftIcon w="7" h="7" />
