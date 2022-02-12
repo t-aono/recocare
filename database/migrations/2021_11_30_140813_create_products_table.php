@@ -24,7 +24,6 @@ class CreateProductsTable extends Migration
             $table->text('item_url');
             $table->text('affiliate_url_url');
             $table->string('affiliate_url_rate');
-            $table->string('small_image_url');
             $table->string('medium_image_url');
             $table->timestamps();
 
