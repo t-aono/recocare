@@ -93,15 +93,6 @@ class GenresTableSeeder extends Seeder
             ),
             8 => 
             array (
-                'id' => 16,
-                'genre_id' => '405206',
-                'name' => 'リップクリーム',
-                'is_use' => '0',
-                'created_at' => '2022-02-11 17:13:08',
-                'updated_at' => '2022-02-11 17:13:08',
-            ),
-            9 => 
-            array (
                 'id' => 17,
                 'genre_id' => '568658',
                 'name' => 'リッププランパー',
@@ -109,7 +100,7 @@ class GenresTableSeeder extends Seeder
                 'created_at' => '2022-02-11 17:13:08',
                 'updated_at' => '2022-02-11 17:13:08',
             ),
-            10 => 
+            9 => 
             array (
                 'id' => 18,
                 'genre_id' => '567442',
@@ -118,7 +109,7 @@ class GenresTableSeeder extends Seeder
                 'created_at' => '2022-02-11 17:13:08',
                 'updated_at' => '2022-02-11 17:13:08',
             ),
-            11 => 
+            10 => 
             array (
                 'id' => 19,
                 'genre_id' => '112849',
@@ -127,7 +118,7 @@ class GenresTableSeeder extends Seeder
                 'created_at' => '2022-02-11 17:13:08',
                 'updated_at' => '2022-02-11 17:13:08',
             ),
-            12 => 
+            11 => 
             array (
                 'id' => 1,
                 'genre_id' => '210450',
@@ -136,7 +127,7 @@ class GenresTableSeeder extends Seeder
                 'created_at' => '2022-02-11 17:13:08',
                 'updated_at' => '2022-02-11 17:18:53',
             ),
-            13 => 
+            12 => 
             array (
                 'id' => 2,
                 'genre_id' => '216301',
@@ -145,7 +136,7 @@ class GenresTableSeeder extends Seeder
                 'created_at' => '2022-02-11 17:13:08',
                 'updated_at' => '2022-02-11 17:53:26',
             ),
-            14 => 
+            13 => 
             array (
                 'id' => 3,
                 'genre_id' => '216307',
@@ -154,7 +145,7 @@ class GenresTableSeeder extends Seeder
                 'created_at' => '2022-02-11 17:13:08',
                 'updated_at' => '2022-02-11 17:53:45',
             ),
-            15 => 
+            14 => 
             array (
                 'id' => 5,
                 'genre_id' => '216348',
@@ -163,7 +154,7 @@ class GenresTableSeeder extends Seeder
                 'created_at' => '2022-02-11 17:13:08',
                 'updated_at' => '2022-02-11 19:35:26',
             ),
-            16 => 
+            15 => 
             array (
                 'id' => 6,
                 'genre_id' => '216387',
@@ -172,7 +163,7 @@ class GenresTableSeeder extends Seeder
                 'created_at' => '2022-02-11 17:13:08',
                 'updated_at' => '2022-02-11 19:35:40',
             ),
-            17 => 
+            16 => 
             array (
                 'id' => 7,
                 'genre_id' => '216424',
@@ -181,7 +172,7 @@ class GenresTableSeeder extends Seeder
                 'created_at' => '2022-02-11 17:13:08',
                 'updated_at' => '2022-02-11 19:36:21',
             ),
-            18 => 
+            17 => 
             array (
                 'id' => 12,
                 'genre_id' => '503020',
@@ -189,6 +180,15 @@ class GenresTableSeeder extends Seeder
                 'is_use' => '1',
                 'created_at' => '2022-02-11 17:13:08',
                 'updated_at' => '2022-02-11 19:36:35',
+            ),
+            18 => 
+            array (
+                'id' => 16,
+                'genre_id' => '405206',
+                'name' => 'リップクリーム',
+                'is_use' => '1',
+                'created_at' => '2022-02-11 17:13:08',
+                'updated_at' => '2022-02-12 21:57:06',
             ),
         ));
         
