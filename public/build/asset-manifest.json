@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/build/static/css/main.7a4cd8f2.chunk.css",
-    "main.js": "/build/static/js/main.15521403.chunk.js",
-    "main.js.map": "/build/static/js/main.15521403.chunk.js.map",
-    "runtime-main.js": "/build/static/js/runtime-main.f55417fc.js",
-    "runtime-main.js.map": "/build/static/js/runtime-main.f55417fc.js.map",
-    "static/js/2.632cb1e6.chunk.js": "/build/static/js/2.632cb1e6.chunk.js",
-    "static/js/2.632cb1e6.chunk.js.map": "/build/static/js/2.632cb1e6.chunk.js.map",
-    "static/js/3.f04ad493.chunk.js": "/build/static/js/3.f04ad493.chunk.js",
-    "static/js/3.f04ad493.chunk.js.map": "/build/static/js/3.f04ad493.chunk.js.map",
+    "main.css": "/build/static/css/main.faa6205d.chunk.css",
+    "main.js": "/build/static/js/main.2c95dede.chunk.js",
+    "main.js.map": "/build/static/js/main.2c95dede.chunk.js.map",
+    "runtime-main.js": "/build/static/js/runtime-main.b428dc16.js",
+    "runtime-main.js.map": "/build/static/js/runtime-main.b428dc16.js.map",
+    "static/js/2.4e5c51e9.chunk.js": "/build/static/js/2.4e5c51e9.chunk.js",
+    "static/js/2.4e5c51e9.chunk.js.map": "/build/static/js/2.4e5c51e9.chunk.js.map",
+    "static/js/3.6ff1609e.chunk.js": "/build/static/js/3.6ff1609e.chunk.js",
+    "static/js/3.6ff1609e.chunk.js.map": "/build/static/js/3.6ff1609e.chunk.js.map",
     "index.html": "/build/index.html",
-    "static/css/main.7a4cd8f2.chunk.css.map": "/build/static/css/main.7a4cd8f2.chunk.css.map",
-    "static/js/2.632cb1e6.chunk.js.LICENSE.txt": "/build/static/js/2.632cb1e6.chunk.js.LICENSE.txt",
+    "static/css/main.faa6205d.chunk.css.map": "/build/static/css/main.faa6205d.chunk.css.map",
+    "static/js/2.4e5c51e9.chunk.js.LICENSE.txt": "/build/static/js/2.4e5c51e9.chunk.js.LICENSE.txt",
     "static/media/cosme.52db0d68.png": "/build/static/media/cosme.52db0d68.png",
     "static/media/cracker.92b79960.svg": "/build/static/media/cracker.92b79960.svg",
     "static/media/logo.ac6a0467.png": "/build/static/media/logo.ac6a0467.png",
@@ -24,9 +24,9 @@
     "static/media/undraw_reading.097b3ba7.svg": "/build/static/media/undraw_reading.097b3ba7.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.f55417fc.js",
-    "static/js/2.632cb1e6.chunk.js",
-    "static/css/main.7a4cd8f2.chunk.css",
-    "static/js/main.15521403.chunk.js"
+    "static/js/runtime-main.b428dc16.js",
+    "static/js/2.4e5c51e9.chunk.js",
+    "static/css/main.faa6205d.chunk.css",
+    "static/js/main.2c95dede.chunk.js"
   ]
 }
