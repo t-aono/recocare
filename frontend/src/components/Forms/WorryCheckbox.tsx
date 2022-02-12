@@ -33,8 +33,6 @@ export const WorryCheckbox = (props: Props) => {
     }
   };
 
-  // console.log(worry);
-
   const url = `${process.env.REACT_APP_BACKEND_HOST}api/effect`;
   const fetcher = (arg: string): Promise<Effect[]> => fetch(arg).then((res) => res.json());
   const { data, error } = useSWR(url, fetcher);

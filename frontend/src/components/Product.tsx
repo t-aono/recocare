@@ -45,8 +45,8 @@ export const Product = () => {
           商品名
         </Box>
         <Box>{data.name}</Box>
-        <Box p="10" className={styles.flexGrow}>
-          <Image src={data.medium_image_url} alt={data.name} objectFit="contain" w="100%" />
+        <Box mt="3" mb="1">
+          <Image src={data.medium_image_url} alt={data.name} objectFit="contain" w="100%" h="10em" borderRadius="lg" />
         </Box>
         <Box>
           <Box fontWeight="bold">価格</Box>
