@@ -1,4 +1,4 @@
-import { useHistory, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import useSWR from "swr";
 import { Link } from "@chakra-ui/react";
 import { Box, Center } from "@chakra-ui/layout";
@@ -19,7 +19,6 @@ type ProductType = {
 };
 
 export const Product = () => {
-  const history = useHistory();
   const { id } = useParams<{ id: string }>();
 
   const url = `${process.env.REACT_APP_BACKEND_HOST}api/product/${id}`;
@@ -37,17 +36,32 @@ export const Product = () => {
 
   return (
     <>
-      <Box>
+      <Box className={styles.linkWrap}>
         <Center as="h1" fontSize="xl">
           商品詳細
         </Center>
         <Box mt="5" fontWeight="bold">
           商品名
         </Box>
-        <Box>{data.name}</Box>
-        <Box p="10" className={styles.flexGrow}>
-          <Image src={data.medium_image_url} alt={data.name} objectFit="contain" w="100%" />
-        </Box>
+        <Link href={data.affiliate_url} isExternal={true}>
+          <Box>{data.name}</Box>
+          <Box mt="3" mb="1">
+            <Image
+              src={data.medium_image_url}
+              alt={data.name}
+              objectFit="contain"
+              w="100%"
+              h="10em"
+              borderRadius="lg"
+            />
+          </Box>
+          <Box my="5" textAlign={"center"}>
+            <Button colorScheme="red" variant="outline">
+              楽天で見る
+              <ExternalLinkIcon mx="2px" />
+            </Button>
+          </Box>
+        </Link>
         <Box>
           <Box fontWeight="bold">価格</Box>
           <Box>
@@ -61,19 +75,13 @@ export const Product = () => {
           <Box fontWeight="bold">登録日</Box>
           <Box>{createdDate}</Box>
         </Box>
-        <Box my="5" textAlign={"center"}>
-          <Link href={data.affiliate_url} isExternal={true}>
-            <Button colorScheme="red" variant="outline">
-              楽天で見る
-              <ExternalLinkIcon mx="2px" />
-            </Button>
-          </Link>
+        <Box mt="3" fontWeight="bold">
+          商品説明
         </Box>
-        <Box fontWeight="bold">商品説明</Box>
         <Box>{data.caption}</Box>
       </Box>
-      <Center mt="10">
-        <Link size="lg" mb="10" variant="link" onClick={() => history.goBack()}>
+      <Center mt="10" className={styles.linkWrap}>
+        <Link size="lg" mb="10" variant="link" onClick={() => window.close()}>
           <ArrowBackIcon w="7" h="7" />
           ランキングに戻る
         </Link>

@@ -11,7 +11,7 @@ class Product extends Model
 
     protected $fillable = [
         'item_code', 'name', 'caption', 'price', 'genre_id', 'parent_genre_id',
-        'item_url', 'affiliate_url_url', 'affiliate_url_rate', 'small_image_url', 'medium_image_url'
+        'item_url', 'affiliate_url', 'affiliate_rate', 'medium_image_url'
     ];
 
     public function itemsStore($items, $parent_genre_id)
@@ -27,9 +27,8 @@ class Product extends Model
             $record['genre_id'] = $item['genreId'];
             $record['parent_genre_id'] = $parent_genre_id;
             $record['item_url'] = $item['itemUrl'];
-            $record['affiliate_url_url'] = $item['affiliateUrl'];
-            $record['affiliate_url_rate'] = $item['affiliateRate'];
-            $record['small_image_url'] = ($item['smallImageUrls']) ? $item['smallImageUrls'][0]['imageUrl'] : '';
+            $record['affiliate_url'] = $item['affiliateUrl'];
+            $record['affiliate_rate'] = $item['affiliateRate'];
             $record['medium_image_url'] = ($item['mediumImageUrls']) ? $item['mediumImageUrls'][0]['imageUrl'] : '';
 
             $this->firstOrCreate(['item_code' => $item['itemCode']], $record);

@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
-import { useHistory, useLocation, Link } from "react-router-dom";
-import { Link as CLink } from "@chakra-ui/layout";
+import { useHistory, useLocation } from "react-router-dom";
+import { Link } from "@chakra-ui/layout";
 import { Box, Center, Flex } from "@chakra-ui/layout";
 import { Button } from "@chakra-ui/button";
 import { SkeletonText } from "@chakra-ui/skeleton";
@@ -12,6 +12,8 @@ import Logo from "..//images/logo.png";
 import Ranking1 from "../svgs/ranking1.svg";
 import Ranking2 from "../svgs/ranking2.svg";
 import Ranking3 from "../svgs/ranking3.svg";
+import { Divider } from "@chakra-ui/react";
+import styles from "../MainStyles.module.css";
 
 type Location = {
   genre: string;
@@ -32,7 +34,7 @@ type History =
 type Item = {
   id: string;
   name: string;
-  small_image_url: string;
+  medium_image_url: string;
   recommend: {
     effective: string;
     ingredient: string;
@@ -167,85 +169,88 @@ export const Ranking = () => {
               {(currentPage - 1) * itemPerPage + 1}〜{currentPage * itemPerPage} 位
             </Box>
             {items.map((item, index) => (
-              <Center key={index} my="12" maxW="30em" mx="auto">
-                <Box ml="5" maxW="30em">
-                  <Flex mb="2" justifyContent="space-between" alignItems="center">
-                    {currentPage === 1 && index === 0 ? (
-                      <Box>
-                        <Image w="12" h="12" src={Ranking1} />
+              <Box key={index}>
+                <Center my="12" maxW="30em" mx="auto">
+                  <Box ml="5" maxW="30em" className={styles.linkWrap}>
+                    <Flex mb="2" justifyContent="space-between" alignItems="center">
+                      {currentPage === 1 && index === 0 ? (
+                        <Box>
+                          <Image w="12" h="12" src={Ranking1} />
+                        </Box>
+                      ) : currentPage === 1 && index === 1 ? (
+                        <Box>
+                          <Image w="10" h="10" src={Ranking2} />
+                        </Box>
+                      ) : currentPage === 1 && index === 2 ? (
+                        <Box>
+                          <Image w="10" h="10" src={Ranking3} />
+                        </Box>
+                      ) : (
+                        <Box fontWeight="bold">{(currentPage - 1) * itemPerPage + index + 1} 位</Box>
+                      )}
+                    </Flex>
+                    <Link href={"/product/" + item.id} isExternal={true}>
+                      <Box>{item.name}</Box>
+                      <Box textAlign="right">
+                        <Button colorScheme="orange" size="sm" variant="link">
+                          詳細を見る
+                        </Button>
                       </Box>
-                    ) : currentPage === 1 && index === 1 ? (
-                      <Box>
-                        <Image w="10" h="10" src={Ranking2} />
+                      <Box mt="3" mb="1">
+                        <Image
+                          src={item.medium_image_url}
+                          fallbackSrc={Logo}
+                          alt={item.name}
+                          objectFit="contain"
+                          w="100%"
+                          h="10em"
+                          borderRadius="lg"
+                        />
                       </Box>
-                    ) : currentPage === 1 && index === 2 ? (
-                      <Box>
-                        <Image w="10" h="10" src={Ranking3} />
-                      </Box>
-                    ) : (
-                      <Box fontWeight="bold">{(currentPage - 1) * itemPerPage + index + 1} 位</Box>
-                    )}
-                  </Flex>
-                  <Box>{item.name}</Box>
-                  <Box textAlign="right">
-                    <Link to={"/product/" + item.id}>
-                      <Button colorScheme="orange" size="sm" variant="link">
-                        詳細を見る
-                      </Button>
                     </Link>
-                  </Box>
-                  <Box mt="3" mb="1">
-                    <Image
-                      src={item.small_image_url}
-                      fallbackSrc={Logo}
-                      alt={item.name}
-                      objectFit="contain"
-                      w="100%"
-                      h="10em"
-                      borderRadius="lg"
-                    />
-                  </Box>
-                  {item.recommend.map((row, i) => (
-                    <Box key={row.ingredient + i} my="3">
-                      <Box
-                        display="inline"
-                        background="gray.400"
-                        fontWeight="bold"
-                        color="#fff"
-                        py="1"
-                        px="3"
-                        mr="1"
-                        borderRadius="full"
-                      >
-                        {row.effective}
+                    {item.recommend.map((row, i) => (
+                      <Box key={row.ingredient + i} my="3">
+                        <Box
+                          display="inline"
+                          background="gray.400"
+                          fontWeight="bold"
+                          color="#fff"
+                          py="1"
+                          px="3"
+                          mr="1"
+                          borderRadius="full"
+                        >
+                          {row.effective}
+                        </Box>
+                        の対策におすすめ
+                        <br />
+                        <Box display="inline" borderBottom="2px solid orange">
+                          {row.ingredient}
+                        </Box>{" "}
+                        配合
                       </Box>
-                      の対策におすすめ
-                      <br />
-                      <Box display="inline" borderBottom="2px solid orange">
-                        {row.ingredient}
-                      </Box>{" "}
-                      配合
+                    ))}
+                    <Box fontSize="sm" float="right">
+                      {item.price.toLocaleString("ja-JP", {
+                        style: "currency",
+                        currency: "JPY",
+                      })}
                     </Box>
-                  ))}
-                  <Box fontSize="sm" float="right">
-                    {item.price.toLocaleString("ja-JP", {
-                      style: "currency",
-                      currency: "JPY",
-                    })}
                   </Box>
-                </Box>
-              </Center>
+                </Center>
+                <Divider />
+              </Box>
             ))}
             <Box mt="10">
               <PaginateBtn currentPage={currentPage} lastPage={lastPage!} changePage={changePage} />
             </Box>
           </>
         )}
-        <Center my="5em">
-          <CLink variant="link" onClick={goBack}>
+        <Center my="5em" className={styles.linkWrap}>
+          <Link variant="link" onClick={goBack}>
             <ArrowBackIcon w="5" h="5" verticalAlign="sub" fontSize="sm" />
             アンケートフォームへ戻る
-          </CLink>
+          </Link>
         </Center>
       </Box>
     </>

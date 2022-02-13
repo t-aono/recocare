@@ -15,7 +15,7 @@
                         <div>
                             <h3 class="text-lg font-bold mb-3">
                                 ジャンル
-                                <span class="text-xs font-normal">想定ジャンル：クレンジング、洗顔料、化粧水、美容液、乳液、フェイスクリーム、フェイスパック
+                                <span class="text-xs font-normal">想定ジャンル：クレンジング、洗顔料、化粧水、美容液、乳液、フェイスクリーム、フェイスパック、リップクリーム
                                 </span>
                             </h3>
                             @if ($errors->any())

@@ -58,7 +58,7 @@ Canva を使って作成
 
 ### ジャンルと商品
 
-商品一覧から Rakuten API で取得（アプリ ID・アフィリエイト ID が必要）  
+商品一覧から [楽天商品検索API](https://webservice.rakuten.co.jp/documentation/ichiba-item-search) で取得（アプリ ID・アフィリエイト ID が必要）  
 商品一覧ページ：http://localhost/product
 
 ### DB から Seeder を作成
@@ -68,6 +68,9 @@ Canva を使って作成
 ```
 php artisan iseed <table-name>
 ```
+
+GitHubリポジトリのサイズに上限はないが１GB未満推奨。  
+100MBのファイルを push できないので注意。
 
 ## 本番環境
 
@@ -82,20 +85,19 @@ php artisan iseed <table-name>
 - SSL 化：[CLOUDFLARE](https://dash.cloudflare.com/9587da9b35449514f8ac93d2a9857a8f/recocare.tk)
 
 - デプロイ関連コマンド
-
-    ```
-    フロントのビルド
-    cd frontend && yarn build
-
-    Herokuへデプロイ
-    git push heroku HEAD:main
-
-    Heroku CLI ログイン
-    heroku login
-
-    マイグレーション
-    heroku run php artisan migrate
-
-    シーディング
-    heroku run php artisan db:seed
-    ```
+	
+	```
+	フロントのビルド
+	cd frontend && yarn build
+	
+	Herokuへデプロイ
+	git push heroku HEAD:main
+	
+	Heroku CLI ログイン
+	heroku login
+	
+	マイグレーション / 初期化 / シーディング
+	heroku run php artisan migrate
+	heroku run php artisan migrate:fresh
+	heroku run php artisan db:seed
+```

@@ -1,25 +1,25 @@
-import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
-import { ChakraProvider, Container, Center } from '@chakra-ui/react';
-import { Image } from '@chakra-ui/image';
+import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
+import { ChakraProvider, Container, Center } from "@chakra-ui/react";
+import { Image } from "@chakra-ui/image";
 
 import styles from "./MainStyles.module.css";
-import NotFound from './svgs/undraw_page_not_found.svg';
-import { Header } from './components/Header';
-import { Top } from './components/Top';
-import { Product } from './components/Product';
-import { QuestionForm } from './components/QuestionForm';
-import { Ranking } from './components/Ranking';
-import { ScrollToTop } from './components/ScrollToTop';
-import { Tracking } from './components/Tracking';
+import NotFound from "./svgs/undraw_page_not_found.svg";
+import { Header } from "./components/Header";
+import { Top } from "./components/Top";
+import { Product } from "./components/Product";
+import { QuestionForm } from "./components/QuestionForm";
+import { Ranking } from "./components/Ranking";
+import { ScrollToTop } from "./components/ScrollToTop";
+import { Tracking } from "./components/Tracking";
 
 function App() {
   return (
     <ChakraProvider>
       <Header />
-      <Container className={styles.mainFontStyle} w='100%'>
+      <Container className={styles.mainFontStyle} w="100%">
         <BrowserRouter>
-          <Tracking trackingId='G-YNY7NS9MHW' />
-          <ScrollToTop/>
+          <Tracking trackingId="G-TPZZBB6674" />
+          <ScrollToTop />
           <Switch>
             <Route exact path="/">
               <Top />
