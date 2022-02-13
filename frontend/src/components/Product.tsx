@@ -1,4 +1,4 @@
-import { useHistory, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import useSWR from "swr";
 import { Link } from "@chakra-ui/react";
 import { Box, Center } from "@chakra-ui/layout";
@@ -19,7 +19,6 @@ type ProductType = {
 };
 
 export const Product = () => {
-  const history = useHistory();
   const { id } = useParams<{ id: string }>();
 
   const url = `${process.env.REACT_APP_BACKEND_HOST}api/product/${id}`;
@@ -76,11 +75,13 @@ export const Product = () => {
           <Box fontWeight="bold">登録日</Box>
           <Box>{createdDate}</Box>
         </Box>
-        <Box fontWeight="bold">商品説明</Box>
+        <Box mt="3" fontWeight="bold">
+          商品説明
+        </Box>
         <Box>{data.caption}</Box>
       </Box>
       <Center mt="10" className={styles.linkWrap}>
-        <Link size="lg" mb="10" variant="link" onClick={() => history.goBack()}>
+        <Link size="lg" mb="10" variant="link" onClick={() => window.close()}>
           <ArrowBackIcon w="7" h="7" />
           ランキングに戻る
         </Link>
