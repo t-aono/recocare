@@ -69,6 +69,9 @@ Canva を使って作成
 php artisan iseed <table-name>
 ```
 
+GitHubリポジトリのサイズに上限はないが１GB未満推奨。  
+100MBのファイルを push できないので注意。
+
 ## 本番環境
 
 - ユーザー画面：[https://recocare.tk](https://recocare.tk)
