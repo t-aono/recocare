@@ -15,10 +15,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
-
 Route::group(['middleware' => 'auth'], function () {
 
     Route::name('ingredient.')->group(function () {
@@ -34,3 +30,7 @@ Route::group(['middleware' => 'auth'], function () {
 });
 
 require __DIR__ . '/auth.php';
+
+Route::get('/{any}', function () {
+    return view('index');
+})->where('any', '.*');

@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
-import { useHistory, useLocation, Link } from "react-router-dom";
-import { Link as CLink } from "@chakra-ui/layout";
+import { useHistory, useLocation } from "react-router-dom";
+import { Link } from "@chakra-ui/layout";
 import { Box, Center, Flex } from "@chakra-ui/layout";
 import { Button } from "@chakra-ui/button";
 import { SkeletonText } from "@chakra-ui/skeleton";
@@ -171,7 +171,7 @@ export const Ranking = () => {
             {items.map((item, index) => (
               <Box key={index}>
                 <Center my="12" maxW="30em" mx="auto">
-                  <Box ml="5" maxW="30em">
+                  <Box ml="5" maxW="30em" className={styles.linkWrap}>
                     <Flex mb="2" justifyContent="space-between" alignItems="center">
                       {currentPage === 1 && index === 0 ? (
                         <Box>
@@ -189,7 +189,7 @@ export const Ranking = () => {
                         <Box fontWeight="bold">{(currentPage - 1) * itemPerPage + index + 1} 位</Box>
                       )}
                     </Flex>
-                    <Link to={"/product/" + item.id}>
+                    <Link href={"/product/" + item.id} isExternal={true}>
                       <Box>{item.name}</Box>
                       <Box textAlign="right">
                         <Button colorScheme="orange" size="sm" variant="link">
@@ -247,10 +247,10 @@ export const Ranking = () => {
           </>
         )}
         <Center my="5em" className={styles.linkWrap}>
-          <CLink variant="link" onClick={goBack}>
+          <Link variant="link" onClick={goBack}>
             <ArrowBackIcon w="5" h="5" verticalAlign="sub" fontSize="sm" />
             アンケートフォームへ戻る
-          </CLink>
+          </Link>
         </Center>
       </Box>
     </>
