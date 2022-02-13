@@ -11,7 +11,7 @@ export const Header = () => {
       <React.StrictMode>
         <HelmetProvider>
           <Helmet>
-            <meta property="og:url" content="http://localhost:3000" />
+            <meta property="og:url" content="http://recocare.tk" />
             <meta property="og:type" content="website" />
             <meta property="og:title" content="Recocare" />
             <meta
@@ -19,7 +19,7 @@ export const Header = () => {
               content="お気に入りのスキンケアを見つけよう！あなたに合わせたオリジナルランキングを紹介"
             />
             <meta property="og:site_name" content="Recocare" />
-            <meta property="og:image" content="http://localhost:3000/build/static/media/logo.ac6a0467.png" />
+            <meta property="og:image" content="http://recocare.tk/build/static/media/logo.ac6a0467.png" />
             <meta name="twitter:card" content="summary" />
           </Helmet>
         </HelmetProvider>

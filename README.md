@@ -85,20 +85,19 @@ GitHubリポジトリのサイズに上限はないが１GB未満推奨。
 - SSL 化：[CLOUDFLARE](https://dash.cloudflare.com/9587da9b35449514f8ac93d2a9857a8f/recocare.tk)
 
 - デプロイ関連コマンド
-
-    ```
-    フロントのビルド
-    cd frontend && yarn build
-
-    Herokuへデプロイ
-    git push heroku HEAD:main
-
-    Heroku CLI ログイン
-    heroku login
-
-    マイグレーション
-    heroku run php artisan migrate
-
-    シーディング
-    heroku run php artisan db:seed
-    ```
+	
+	```
+	フロントのビルド
+	cd frontend && yarn build
+	
+	Herokuへデプロイ
+	git push heroku HEAD:main
+	
+	Heroku CLI ログイン
+	heroku login
+	
+	マイグレーション / 初期化 / シーディング
+	heroku run php artisan migrate
+	heroku run php artisan migrate:fresh
+	heroku run php artisan db:seed
+```
