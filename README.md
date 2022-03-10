@@ -53,7 +53,7 @@ Canva を使って作成
 
 [サイト](https://liruu.jp/ingredients/)からスクレイピング → csv 出力して成分一覧からインポート
 
-- データ：[スプレッドシート「化粧品成分一覧」](https://docs.google.com/spreadsheets/d/1KvcgP5QfpR3PxW7kzyUeMIP1WJ7lY35aNQ1QduyJIkA/edit#gid=0)
+- データ：[スプレッドシート「スキンケア商品の成分表」](https://docs.google.com/spreadsheets/d/1yW18aefAp2uclfq6QPZ-XwelrUcGRtWYWbSet88-WD0/edit?usp=sharing)
 - インポート画面：http://localhost/ingredient
 
 ### ジャンルと商品
