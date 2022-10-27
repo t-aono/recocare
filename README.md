@@ -1,103 +1,86 @@
 # Recocare
 
-## Docker 環境を構築
+## 概要
 
+おすすめスキンケア商品をオリジナルランキング形式で紹介するWebサービス。  
+３つの質問に答えるとスキンケア商品のおすすめランキングを生成します。  
+
+## 機能
+
+- 利用者が選択した悩みに応じて化粧品のおすすめランキングを表示
+- 商品名を押すと商品紹介ページに遷移
+- 化粧品の成分データは楽天商品検索APIから取得（管理者側）
+- 成分と対応する悩みを点数化してDBに保存（管理者側）
+- 表示対象の商品やカテゴリの管理（管理者側）
+
+## 使用技術
+
+- フロントエンド：TypeScript, React, Chakra UI
+- バックエンド：Laravel
+- サーバー / DB：Heroku, Heroku Postgres
+
+## デモ
+
+
+
+## ローカルでの動作方法
+
+### バックエンド
+
+コマンド
 ```bash
+# Docker環境構築
 make up
 make stop
 make restart
 etc
-```
 
-- ホーム URL：http://localhost
-- 管理画面：http://localhost/login  
-  recos3221@ne.jp / 3221
-
-## コンテナ構造
-
-```bash
-├── app
-├── web
-└── db
-```
-
-### app container
-
-Base image : [php](https://hub.docker.com/_/php):8.0-fpm-bullseye / [composer](https://hub.docker.com/_/composer):2.1
-
-### web container
-
-Base image : [nginx](https://hub.docker.com/_/nginx):1.20-alpine / [node](https://hub.docker.com/_/node):16-alpine
-
-### db container
-
-Base image : [postgres](https://hub.docker.com/_/postgres)
-
-## フロントエンド
-
-### ローカル開発環境
-
-frontend フォルダにて `yarn start` → http://localhost:3000 にアクセス
-
-### デプロイ時のビルド
-
-frontend フォルダにて `yarn build` → public にファイル生成される
-
-### ヘッダー画像
-
-Canva を使って作成
-
-## データ準備
-
-### 効果と成分
-
-[サイト](https://liruu.jp/ingredients/)からスクレイピング → csv 出力して成分一覧からインポート
-
-- データ：[スプレッドシート「スキンケア商品の成分表」](https://docs.google.com/spreadsheets/d/1yW18aefAp2uclfq6QPZ-XwelrUcGRtWYWbSet88-WD0/edit?usp=sharing)
-- インポート画面：http://localhost/ingredient
-
-### ジャンルと商品
-
-商品一覧から [楽天商品検索API](https://webservice.rakuten.co.jp/documentation/ichiba-item-search) で取得（アプリ ID・アフィリエイト ID が必要）  
-商品一覧ページ：http://localhost/product
-
-### DB から Seeder を作成
-
-以下のコマンドで Seeder ファイルが作成できる。
-
-```
+# DBからSeederを作成
 php artisan iseed <table-name>
+
+# シーディング
+php artisan db:seed
 ```
 
-GitHubリポジトリのサイズに上限はないが１GB未満推奨。  
-100MBのファイルを push できないので注意。
+URL
+- トップページ：http://localhost
+- 管理画面：http://localhost/login  
 
-## 本番環境
 
-- ユーザー画面：[https://recocare.tk](https://recocare.tk)
+Seederファイルについて
 
-- ホスティング：[heroku](https://dashboard.heroku.com/apps/recocare)
+- `database/seeders`配下に作成される。
+- GitHubリポジトリのサイズに上限はないが１GB未満推奨。  
+- 100MBのファイルを push できないので注意。
 
-- スリープ対策：[UptimeRobot](https://uptimerobot.com/dashboard#mainDashboard)
 
-- ドメイン：[freenom](https://my.freenom.com/clientarea.php?action=domains)
+### フロントエンド
 
-- SSL 化：[CLOUDFLARE](https://dash.cloudflare.com/9587da9b35449514f8ac93d2a9857a8f/recocare.tk)
+コマンド
+```bash
+# 開発サーバー起動
+cd frontend
+yarn start
+```
 
-- デプロイ関連コマンド
-	
-	```
-	フロントのビルド
-	cd frontend && yarn build
-	
-	Herokuへデプロイ
-	git push heroku HEAD:main
-	
-	Heroku CLI ログイン
-	heroku login
-	
-	マイグレーション / 初期化 / シーディング
-	heroku run php artisan migrate
-	heroku run php artisan migrate:fresh
-	heroku run php artisan db:seed
+URL
+http://localhost:3000
+
+### デプロイ
+
+コマンド	
+```bash
+# フロントのビルド（frontend/.env.productionでREACT_APP_BACKEND_HOSTが必要）
+cd frontend && yarn build
+
+# Herokuへデプロイ（.env.herokuが必要）
+git push heroku HEAD:main
+
+# Heroku CLI ログイン
+heroku login
+
+# マイグレーション / 初期化 / シーディング
+heroku run php artisan migrate
+heroku run php artisan migrate:fresh
+heroku run php artisan db:seed
 ```
