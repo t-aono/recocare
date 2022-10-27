@@ -21,7 +21,7 @@
 
 ## デモ
 
-
+![recocare-demo](https://user-images.githubusercontent.com/46856574/198165749-ed57c419-22bc-4c32-904c-4ff35f1eccd7.gif)
 
 ## ローカルでの動作方法
 
